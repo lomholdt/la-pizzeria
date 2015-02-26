@@ -1,5 +1,6 @@
 # LaPizzeria - Web Shop
 Interactive Web Services with Java and XML 2015
+<img src="http://i.imgur.com/IhEnpDL.png">
 
 ## Use Cases
 * **Register:** The customer should be able to register at the La Pizzeria web
