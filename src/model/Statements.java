@@ -19,7 +19,6 @@ public class Statements {
     }
     
     public List getPizzas(){
-    		
 			try {
 				List l = new ArrayList<Pizza>();
 				ResultSet rs = DBConnect.getData("SELECT * FROM pizzas");
