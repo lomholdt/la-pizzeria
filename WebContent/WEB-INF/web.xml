@@ -9,8 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  
+  <servlet>
+    <servlet-name>MainController</servlet-name>
+    <servlet-class>controller.MainController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainController</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>db</servlet-name>
     <servlet-class>controller.DBController</servlet-class>
@@ -18,5 +24,21 @@
   <servlet-mapping>
     <servlet-name>db</servlet-name>
     <url-pattern>/db</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>controller.UserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>/createuser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CreateUserController</servlet-name>
+    <servlet-class>controller.CreateUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateUserController</servlet-name>
+    <url-pattern>/createusercontroller</url-pattern>
   </servlet-mapping>
 </web-app>
