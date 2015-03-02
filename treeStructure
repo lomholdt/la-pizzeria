@@ -1,0 +1,26 @@
+.
+├── README.md
+├── WebContent
+│   ├── META-INF
+│   │   └── MANIFEST.MF
+│   ├── WEB-INF
+│   │   ├── lib
+│   │   └── web.xml
+│   ├── index.jsp
+│   └── views
+├── bin
+│   ├── controller
+│   │   └── lolcontroller.class
+│   └── model
+│       └── lolmodel.class
+├── build
+│   ├── buildfile
+│   └── classes
+│       ├── controller
+│       └── model
+├── src
+│   ├── controller
+│   └── model
+└── treeStructure
+
+15 directories, 8 files
