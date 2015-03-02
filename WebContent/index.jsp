@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,5 +11,20 @@
 </head>
 <body>
 <b><% out.print("HELLO"); %></b>
+
+
+
+
+
+ 
+<c:forEach items="${result}" var="pizz">
+
+<c:out value="${pizz.name}" />
+<c:out value="${pizz.price}" />
+<c:out value="${pizz.id}" />
+
+
+</c:forEach>
+
 </body>
 </html>
