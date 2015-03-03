@@ -32,6 +32,18 @@ public class DBConnect {
         return conn;
     }
     
+    public static PreparedStatement preparedStatement(String sql) throws Exception {
+    	return getCon().prepareStatement(sql);
+    } 
+     
+    
+    
+    
+    /**
+     * HMmmmmm.....
+     * @param sql
+     * @return
+     */
     public static boolean putData(String sql) {
         try {
             getCon().setAutoCommit(false);
