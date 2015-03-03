@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ValidateController
  */
 @WebServlet("/ValidateController")
-public class ValidateController extends HttpServlet {
+public class ValidateMailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ValidateController() {
+    public ValidateMailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,7 +38,6 @@ public class ValidateController extends HttpServlet {
 		String email = request.getParameter("email");
 		RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
 		view.forward(request, response);
-		
 		
 	}
 
