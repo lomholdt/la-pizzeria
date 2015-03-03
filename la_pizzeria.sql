@@ -48,8 +48,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address` varchar(45) NOT NULL,
   `zipcode` int(11) NOT NULL,
   `phonenumber` int(11) NOT NULL,
+  `active` boolean NOT NULL DEFAULT false,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `pin` (
+  `useremail` varchar(45) NOT NULL,
+  `pincode` int(4) NOT NULL,
+  PRIMARY KEY (`useremail`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
