@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Pizza;
 import model.Statements;
@@ -32,16 +33,19 @@ public class BrowseController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		int page = 1;
-		int pizzasPerPage = 10;
+		int pizzasPerPage = 10; 
 		if(request.getParameter("page") != null) page = Integer.parseInt(request.getParameter("page"));
+		String sortBy = sortBy(request);
+		
 		int offset = (page-1)*pizzasPerPage;
 		
 		Statements stmts = new Statements();
-		List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage);
-		int totalPizzas = stmts.getNumPizzas();
+		List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortBy);
 		
-		int totalPages = (int)Math.ceil(totalPizzas*1.0 / pizzasPerPage);
+		int totalPizzas = stmts.getNumPizzas();
+		int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
 		
 		request.setAttribute("pizzas", pizzas);
 		request.setAttribute("totalPages", totalPages);
@@ -56,6 +60,20 @@ public class BrowseController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	
+	protected String sortBy(HttpServletRequest request){
+		String urlSort = request.getParameter("sortBy");
+		
+		if(urlSort == null){
+			request.setAttribute("sortBy", "name");
+			return "name";
+		}
+		else{
+			request.setAttribute("sortBy", urlSort);
+			return urlSort;
+		}
 	}
 
 }

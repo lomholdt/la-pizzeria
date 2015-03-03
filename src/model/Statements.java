@@ -57,11 +57,11 @@ public class Statements {
 		}
 	}
 	
-	public List<Pizza> getPizzas(int offset, int numberOfPizzas){
+	public List<Pizza> getPizzas(int offset, int numberOfPizzas, String sortBy){
 		try {
 			List<Pizza> pizzas = new ArrayList<Pizza>();
 			
-			rs = DBConnect.getData("SELECT name, price, description FROM pizza LIMIT " + offset + ", " + numberOfPizzas);
+			rs = DBConnect.getData("SELECT name, price, description FROM pizza ORDER BY " + sortBy + " LIMIT " + offset + ", " + numberOfPizzas);
 			
 			while(rs.next()){
 				Pizza p = new Pizza();
