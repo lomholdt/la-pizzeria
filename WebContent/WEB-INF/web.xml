@@ -41,4 +41,12 @@
     <servlet-name>CreateUserController</servlet-name>
     <url-pattern>/createusercontroller</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ValidateController</servlet-name>
+    <servlet-class>controller.ValidateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateController</servlet-name>
+    <url-pattern>/validate</url-pattern>
+  </servlet-mapping>
 </web-app>

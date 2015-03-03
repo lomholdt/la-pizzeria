@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Authenticator;
+import model.SendMail;
 import model.Statements;
 
 /**
@@ -51,7 +52,11 @@ public class CreateUserController extends HttpServlet {
 		Authenticator auth = new Authenticator();
 		if(auth.isValidUser(email, password, name, address, zipcode, phonenumber)){
 			Statements db = new Statements();
-			db.addUserToDatabase(email, password, name, address, zipcode, phonenumber);
+			if(db.addUserToDatabase(email, password, name, address, zipcode, phonenumber)){
+				String pinCode = db.addPinToDatabase(email);
+				SendMail mail = new SendMail();
+				mail.sendPinCode(email, name, pinCode);	
+			}
 			out.print("user valid");
 		}
 		else{
