@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Authenticator;
+import model.Statements;
 
 /**
  * Servlet implementation class CreateUserController
@@ -38,16 +39,23 @@ public class CreateUserController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String a = request.getParameter("email");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String zipcode = request.getParameter("zipcode");
+		String phonenumber = request.getParameter("phonenumber");
+		
 		PrintWriter out = response.getWriter();
 		
 		Authenticator auth = new Authenticator();
-		if(auth.authUserValues(a, "", "", "", 1, 1)){
-			
-			out.print("email valid");
+		if(auth.isValidUser(email, password, name, address, zipcode, phonenumber)){
+			Statements db = new Statements();
+			db.addUserToDatabase(email, password, name, address, zipcode, phonenumber);
+			out.print("user valid");
 		}
 		else{
-			out.print("email not vaild");
+			out.print("user not vaild");
 		}
 	}
 
