@@ -1,12 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,22 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.DBConnect;
+import model.Pizza;
 import model.Statements;
 
 /**
- * Servlet implementation class DBController
+ * Servlet implementation class BrowseController
  */
-@WebServlet("/DBController")
-public class DBController extends HttpServlet {
+@WebServlet("/BrowseController")
+public class BrowseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DBController() {
+    public BrowseController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -38,20 +32,30 @@ public class DBController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Statements st = new Statements();	
-			
-		request.setAttribute("result", st.getPizzas());
-		RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+		int page = 1;
+		int pizzasPerPage = 10;
+		if(request.getParameter("page") != null) page = Integer.parseInt(request.getParameter("page"));
+		int offset = (page-1)*pizzasPerPage;
+		
+		Statements stmts = new Statements();
+		List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage);
+		int totalPizzas = stmts.getNumPizzas();
+		
+		int totalPages = (int)Math.ceil(totalPizzas*1.0 / pizzasPerPage);
+		
+		request.setAttribute("pizzas", pizzas);
+		request.setAttribute("totalPages", totalPages);
+		request.setAttribute("page", page);
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
 		view.forward(request, response);
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

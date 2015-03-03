@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `pizza` (
   `id` int(11) NOT NULL auto_increment,
-  `name` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `price` int(11) NOT NULL,
   `description` varchar(45) NOT NULL,
   PRIMARY KEY  (`id`)
