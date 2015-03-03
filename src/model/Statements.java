@@ -49,6 +49,7 @@ public class Statements {
 				pstmt.setString(4, a);
 				pstmt.setString(5, z);
 				pstmt.setString(6, ph);
+				
 				pstmt.executeUpdate();
 
 		} catch (Exception e1) {

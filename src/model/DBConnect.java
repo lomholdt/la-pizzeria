@@ -34,36 +34,6 @@ public class DBConnect {
     
     public static PreparedStatement preparedStatement(String sql) throws Exception {
     	return getCon().prepareStatement(sql);
-    } 
-     
-    
-    
-    
-    /**
-     * HMmmmmm.....
-     * @param sql
-     * @return
-     */
-    public static boolean putData(String sql) {
-        try {
-            getCon().setAutoCommit(false);
-            stmt = getCon().prepareStatement(sql);
-            stmt.executeUpdate();
-            getCon().commit();
-            b = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            b = false;
-        }
-        return b;
-    }
-
-    public static void commit() {
-        try {
-            conn.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     
     public static ResultSet getData(String sql) throws Exception {
