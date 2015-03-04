@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.Pizza;
 import model.Statements;
@@ -42,9 +41,9 @@ public class BrowseController extends HttpServlet {
 		int offset = (page-1)*pizzasPerPage;
 		
 		Statements stmts = new Statements();
-		List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortBy);
-		
+		List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortBy);		
 		int totalPizzas = stmts.getNumPizzas();
+		
 		int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
 		
 		request.setAttribute("pizzas", pizzas);
