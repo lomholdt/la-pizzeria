@@ -35,7 +35,7 @@ public class SendMail{
             message.setSubject("Welcome to La Pizzeria - please verify your account");
             message.setContent("Dear "+ name
                 + "\n\n Please verify your account by using the pincode below."
-                + "\n pincode: <b>" + pincode + "</b>\n use the following link: localhost:8080/la-pizzeria/validate?email="+email, "text/html; charset=utf-8");
+                + "\n Insert your pincode: <b>" + pincode + "</b>\n in the following link: <a href=\"http://localhost:8080/la-pizzeria/validate?email="+email+"\">Click here</a>", "text/html; charset=utf-8");
             
             Transport.send(message);
             System.out.println("Done");

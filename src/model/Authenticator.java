@@ -39,7 +39,7 @@ public class Authenticator {
 	}
 	
 	public boolean isValidName(String name){
-		Pattern p = Pattern.compile("[A-z]+", Pattern.CASE_INSENSITIVE);
+		Pattern p = Pattern.compile("^[A-z\\s]+$", Pattern.CASE_INSENSITIVE);
 		Matcher m = p.matcher(name);
 		if(!m.matches()){return false;}
 		

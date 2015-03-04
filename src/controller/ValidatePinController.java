@@ -37,11 +37,11 @@ public class ValidatePinController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pincode = request.getParameter("pincode");
+//		String pincode = request.getParameter("pincode");
 		String email = request.getParameter("email");
 		
 		PrintWriter out = response.getWriter();
-		out.println(pincode + " - " + email);
+		out.println(email + " is now validated");
 	}
 
 }

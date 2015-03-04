@@ -55,7 +55,8 @@ public class Statements {
 				return true;
 
 		} catch (Exception e1) {
-			e1.printStackTrace();
+//			e1.printStackTrace();
+			System.out.print(e1.getMessage());
 			return false;
 		}
 	}
