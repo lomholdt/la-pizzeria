@@ -36,6 +36,7 @@ public class ValidateMailController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("email");
+		request.setAttribute("email", email);
 		RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
 		view.forward(request, response);
 		
