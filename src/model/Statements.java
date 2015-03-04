@@ -78,6 +78,17 @@ public class Statements {
 		return pinCode;
 	}
 	
+	public void removePinFromDatabase(String email) {
+		try {
+			PreparedStatement pstmt = c.preparedStatement("DELETE FROM la_pizzeria.pin WHERE pin.useremail = ?");
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+		}
+		catch(Exception e1) {
+			e1.printStackTrace();
+		}
+	}
+	
 	public boolean validateEmail(String pin, String email) {
 		try {
 			PreparedStatement pinstmt = c.preparedStatement("SELECT pincode FROM pin WHERE pin.useremail = ?;");

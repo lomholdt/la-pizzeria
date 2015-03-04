@@ -43,6 +43,7 @@ public class ValidatePinController extends HttpServlet {
 		Statements s = new Statements();
 		
 		if(s.validateEmail(pincode, email)) {
+			s.removePinFromDatabase(email);
 			request.setAttribute("msg", "You are now registered, please login below");
 			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
 			view.forward(request, response);
