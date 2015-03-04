@@ -10,20 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.SessionModel;
-import model.Statements;
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LogoutController
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/LogoutController")
+public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LogoutController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,30 +29,16 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
+		request.getSession().invalidate();
+		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
+		System.out.print("Logout");
 		view.forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Statements s = new Statements();
-		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		
-		if(s.login(email, password)) {
-//			request.setAttribute("msg", "You are now logged in");
-			SessionModel sessionModel = new SessionModel(request, email);
-			RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
-			view.forward(request, response);
-		}
-		else {
-			request.setAttribute("msg", "Email or password was incorrect");
-			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
-			view.forward(request, response);
-		}
+		// TODO Auto-generated method stub
 	}
 
 }

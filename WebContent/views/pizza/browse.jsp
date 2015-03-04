@@ -10,6 +10,7 @@
 <!-- PIZZA BROWSER BEGIN -->
 <c:if test="${error != null}"><p class="error">${error}</p></c:if>
 <c:if test="${totalPages gt 0}">
+<a href="LogoutController">Logout</a>
 	<table border="1">
 		<form method="GET" action="">
 			<select name="sortBy" onchange="this.form.submit()">
