@@ -24,8 +24,6 @@ public class Statements {
         }
     }
    
-    
-    
 	public boolean addUserToDatabase(String e, String p, String n, String a, String z, String ph){
 		try {
 				pstmt = c.preparedStatement("INSERT INTO user (email, password, name, address, zipcode, phonenumber) "
@@ -38,7 +36,6 @@ public class Statements {
 				pstmt.setString(6, ph);				
 				pstmt.executeUpdate();
 				
-
 				return true;
 
 		} catch (Exception e1) {
@@ -60,9 +57,29 @@ public class Statements {
 		}catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
 		return pinCode;
-		
+	}
+	
+	public boolean validateEmail(String pin, String email) {
+		try {
+			System.out.print("DATABASE?");
+			PreparedStatement pinstmt = c.preparedStatement("SELECT pincode FROM pin WHERE pin.useremail = ?;");
+			pinstmt.setString(1, email);
+			rs = pinstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getString("pincode").equals(pin)) {
+					System.out.println("SET 1 I DATABASE!!");
+					PreparedStatement pstmt = c.preparedStatement("UPDATE la_pizzeria.user SET active = 1 WHERE user.email =?;");
+					pstmt.setString(1, email);
+					pstmt.executeUpdate();
+					return true;
+				}
+			}
+		}
+		catch(Exception e1) {
+			e1.printStackTrace();
+		}
+		return false;
 	}
 	
 
