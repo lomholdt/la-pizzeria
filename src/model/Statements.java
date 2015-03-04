@@ -3,6 +3,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,17 +11,21 @@ import java.util.Random;
 
 public class Statements {
 	
-
-    Connection conn;
+	Connection conn;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	DBConnect c;
 
     public Statements() {
         try {
-            this.conn = DBConnect.getCon();
+        	c = new DBConnect();
+			this.conn = c.getCon();
         } catch (Exception ex) {
         	ex.getMessage();
         }
     }
     
+<<<<<<< HEAD
     public List getPizzas(){
 			try {
 				List l = new ArrayList<Pizza>();
@@ -41,8 +46,11 @@ public class Statements {
     
     
 	public boolean addUserToDatabase(String e, String p, String n, String a, String z, String ph){
+=======
+	public void addUserToDatabase(String e, String p, String n, String a, String z, String ph){
+>>>>>>> 952e22511bcd0d19a366324ab3a07f3f1973f89b
 		try {
-				PreparedStatement pstmt = DBConnect.preparedStatement("INSERT INTO user (email, password, name, address, zipcode, phonenumber) "
+				pstmt = c.preparedStatement("INSERT INTO user (email, password, name, address, zipcode, phonenumber) "
 					+ "VALUES (?, ?, ?, ?, ?, ?);");
 				pstmt.setString(1, e);
 				pstmt.setString(2, p);
@@ -52,8 +60,11 @@ public class Statements {
 				pstmt.setString(6, ph);				
 				pstmt.executeUpdate();
 				
+<<<<<<< HEAD
 				return true;
 
+=======
+>>>>>>> 952e22511bcd0d19a366324ab3a07f3f1973f89b
 		} catch (Exception e1) {
 //			e1.printStackTrace();
 			System.out.print(e1.getMessage());
@@ -78,5 +89,36 @@ public class Statements {
 		
 	}
 	
+<<<<<<< HEAD
     
+=======
+	public List<Pizza> getPizzas(int offset, int numberOfPizzas, String sortBy) throws Exception{
+		try {
+			List<Pizza> pizzas = new ArrayList<Pizza>();
+			rs = c.getData("SELECT name, price, description FROM pizza ORDER BY " + sortBy + " LIMIT " + offset + ", " + numberOfPizzas);
+			
+			while(rs.next()){
+				Pizza p = new Pizza();
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getInt("price"));
+				p.setDescription(rs.getString("description"));
+				pizzas.add(p);
+			}
+			
+			return pizzas;
+		} catch (Exception e) {
+			throw e;
+		}	
+	}
+	
+	public int getNumPizzas(){
+		try {
+			rs = c.getData("SELECT COUNT(*) AS numpizz FROM pizza");
+			if(rs.next()) return (rs.getInt("numpizz"));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return 0;
+	}
+>>>>>>> 952e22511bcd0d19a366324ab3a07f3f1973f89b
 }
