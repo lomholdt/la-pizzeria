@@ -8,7 +8,8 @@
 
 
 <!-- PIZZA BROWSER BEGIN -->
-<c:if test="${totalPages != 0}">
+<c:if test="${error != null}"><p class="error">${error}</p></c:if>
+<c:if test="${totalPages gt 0}">
 	<table border="1">
 		<form method="GET" action="">
 			<select name="sortBy" onchange="this.form.submit()">
@@ -32,7 +33,7 @@
 	</table>
 	
 	<!-- PAGINATION BEGIN -->
-	<c:if test="${page != 1}">
+	<c:if test="${page gt 1}">
 		<a href="browse?page=${page - 1}&sortBy=${sortBy}">&lt; Previous</a>
 	</c:if>
 	

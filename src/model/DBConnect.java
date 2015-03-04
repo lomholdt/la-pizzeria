@@ -8,11 +8,11 @@ import java.sql.Statement;
 
 public class DBConnect {
 	
-	static Connection conn = null;
-	static PreparedStatement stmt = null;
-	static boolean b;
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	boolean b;
 	
-	public static void setCon(){
+	public void setCon(){
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -25,18 +25,18 @@ public class DBConnect {
 		}
 	}
 	
-    public static Connection getCon() throws Exception {
+    public Connection getCon() throws Exception {
         if (conn == null) {
             setCon();
         }
         return conn;
     }
     
-    public static PreparedStatement preparedStatement(String sql) throws Exception {
+    public PreparedStatement preparedStatement(String sql) throws Exception {
     	return getCon().prepareStatement(sql);
     }
     
-    public static ResultSet getData(String sql) throws Exception {
+    public ResultSet getData(String sql) throws Exception {
         Statement state = getCon().createStatement();
         ResultSet rs = state.executeQuery(sql);
         return rs;

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DBConnect;
 import model.Pizza;
 import model.Statements;
 
@@ -32,23 +33,28 @@ public class BrowseController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		int page = 1;
-		int pizzasPerPage = 10; 
-		if(request.getParameter("page") != null) page = Integer.parseInt(request.getParameter("page"));
-		String sortBy = sortBy(request);
-		
-		int offset = (page-1)*pizzasPerPage;
-		
-		Statements stmts = new Statements();
-		List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortBy);		
-		int totalPizzas = stmts.getNumPizzas();
-		
-		int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
-		
-		request.setAttribute("pizzas", pizzas);
-		request.setAttribute("totalPages", totalPages);
-		request.setAttribute("page", page);
+		try {
+			int page = 1;
+			int pizzasPerPage = 10; 
+			if(request.getParameter("page") != null) page = Integer.parseInt(request.getParameter("page"));
+			String sortBy = sortBy(request);
+			
+			int offset = (page-1) * pizzasPerPage;
+			
+			Statements stmts = new Statements();
+			
+			List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortBy);		
+			int totalPizzas = stmts.getNumPizzas();
+			
+			int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
+			
+			request.setAttribute("pizzas", pizzas);
+			request.setAttribute("totalPages", totalPages);
+			request.setAttribute("page", page);
+			
+		} catch (Exception e) {
+			request.setAttribute("error", "Could not get pizzas..." + e.getMessage());
+		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
 		view.forward(request, response);
