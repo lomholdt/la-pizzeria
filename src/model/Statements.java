@@ -23,6 +23,24 @@ public class Statements {
         	ex.getMessage();
         }
     }
+    
+    public boolean login(String email, String pwd) {
+    	try {
+    		pstmt = c.preparedStatement("SELECT email, password, active FROM user WHERE email =?;");
+    		pstmt.setString(1, email);
+    		rs = pstmt.executeQuery();
+    		if(rs.next()) {
+    			if(rs.getString("active").equals("1") && rs.getString("password").equals(pwd)) {
+    				// BAM, LOG IND!
+    				return true;
+    			}
+    		}
+    	}
+    	catch(Exception e1) {
+    		e1.printStackTrace();
+    	}
+    	return false;
+    }
    
 	public boolean addUserToDatabase(String e, String p, String n, String a, String z, String ph){
 		try {

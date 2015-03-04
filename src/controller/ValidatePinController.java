@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,12 +40,10 @@ public class ValidatePinController extends HttpServlet {
 		String pincode = request.getParameter("pincode");
 		String email = request.getParameter("email");
 		
-		PrintWriter out = response.getWriter();
-		out.println(email + " is now validated");
-		
 		Statements s = new Statements();
 		
 		if(s.validateEmail(pincode, email)) {
+			request.setAttribute("msg", "You are now registered, please login below");
 			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
 			view.forward(request, response);
 		}
@@ -54,9 +51,6 @@ public class ValidatePinController extends HttpServlet {
 			request.setAttribute("error", "Unable to validate pin");
 			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
 			view.forward(request, response);
-		}
-		
-		
+		}	
 	}
-
 }
