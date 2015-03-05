@@ -1,8 +1,8 @@
 package model;
 
-public class Pizza {
+public class Pizza implements Item {
 	
-	private int pizzaid;
+	private int id;
 	private String name;
 	private int price;
 	private String description;
@@ -30,9 +30,13 @@ public class Pizza {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public void setId(int pizzaid){
+		this.id = pizzaid;
+	}
 
-	public int getPizzaid() {
-		return pizzaid;
+	public int getId() {
+		return id;
 	}
 	
 }

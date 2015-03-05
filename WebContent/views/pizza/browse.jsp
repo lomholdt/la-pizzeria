@@ -8,7 +8,12 @@
 
 
 <!-- PIZZA BROWSER BEGIN -->
-<c:if test="${error != null}"><p class="error">${error}</p></c:if>
+<c:if test="${error != null}">
+	<div class="alert alert-warning">
+		<span class="glyphicon glyphicon-exclamation-sign"></span>
+		${error}
+	</div>
+</c:if>
 <c:if test="${totalPages gt 0}">
 	<form method="GET" action="">
 		<select name="sortBy" onchange="this.form.submit()">
@@ -17,19 +22,25 @@
 			<option value="price">Price</option>
 		</select>
 	</form>
-	<table class="table">
-		<tr>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Description</th>
-		</tr>
-		<c:forEach var="pizza" items="${pizzas}">
-		<tr>
-			<td>${pizza.name}</td>
-			<td>${pizza.price}</td>
-			<td>${pizza.description}</td>
-		</tr>
-		</c:forEach>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="pizza" items="${pizzas}">
+			<tr>
+				<td>${pizza.name}</td>
+				<td>${pizza.price}</td>
+				<td>${pizza.description}</td>
+				<td><a href="basket?add=${pizza.id}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
+			</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 	
 	<!-- PAGINATION BEGIN -->
