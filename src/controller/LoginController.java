@@ -47,9 +47,8 @@ public class LoginController extends HttpServlet {
 		
 		if(s.login(email, password)) {
 //			request.setAttribute("msg", "You are now logged in");
-			SessionModel sessionModel = new SessionModel(request, email);
-			RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
-			view.forward(request, response);
+			new SessionModel(request, email);
+			response.sendRedirect("browse");
 		}
 		else {
 			request.setAttribute("msg", "Email or password was incorrect");

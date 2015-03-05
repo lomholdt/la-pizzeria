@@ -30,9 +30,8 @@ public class LogoutController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
-		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
+		response.sendRedirect("browse");
 		System.out.print("Logout");
-		view.forward(request, response);
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

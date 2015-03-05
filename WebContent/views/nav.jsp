@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
      <div class="container">
        <div class="navbar-header">
@@ -13,7 +14,14 @@
          <ul class="nav navbar-nav">
            <li><a href="${pageContext.request.contextPath}/browse">Browse Pizz</a></li>
            <li><a href="${pageContext.request.contextPath}/createuser">Create User</a></li>
-           <li><a href="#contact">Contact</a></li>
+           <c:choose>
+	           	<c:when test="${email ne null}">
+		           <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+	           	</c:when>
+	           	<c:otherwise>
+	           		<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+	           	</c:otherwise>
+           </c:choose>
          </ul>
        </div><!--/.nav-collapse -->
      </div>
