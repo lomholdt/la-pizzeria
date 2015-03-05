@@ -36,7 +36,6 @@ public class BrowseController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");
-		System.out.println(email);
 		
 		try {
 			int page = 1;
