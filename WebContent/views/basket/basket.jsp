@@ -3,7 +3,9 @@
 
 <basket:wrap title="La Pizzeria - Basket">
 
-<h1>Pizza Basket</h1>
+<h1>Pizza Basket</h1> 
+<p>Items in basket: <b>${basket.size}</b></p>
+<p>Total: <b>${basket.totalPrice}</b></p>
 
 <c:if test="${error != null}"><p class="alert alert-warning">${error}</p></c:if>
 <c:choose>
@@ -14,6 +16,7 @@
 				<th>Name</th>
 				<th>Price</th>
 				<th>Description</th>
+				<th></th>
 			</tr>
 			<c:forEach var="item" items="${basket.list}" varStatus="i">
 			<tr>
@@ -26,7 +29,7 @@
 		</table>
 	</c:when>
 	<c:otherwise>
-	<div>Your basket is empty...</div>
+	<div class="alert alert-info">Your basket is empty...</div>
 	
 	</c:otherwise>
 
