@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.SessionModel;
 import model.Statements;
@@ -40,12 +39,11 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Statements s = new Statements();
-		
+				
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		if(s.login(email, password)) {
-//			request.setAttribute("msg", "You are now logged in");
 			new SessionModel(request, email);
 			response.sendRedirect("browse");
 		}

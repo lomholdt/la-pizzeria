@@ -29,7 +29,8 @@ public class ValidatePinController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
+		view.forward(request, response);
 	}
 
 	/**
@@ -37,19 +38,20 @@ public class ValidatePinController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pincode = request.getParameter("pincode");
-		String email = request.getParameter("email");
+		String mail = request.getParameter("mail");
 		
 		Statements s = new Statements();
 		
-		if(s.validateEmail(pincode, email)) {
-			s.removePinFromDatabase(email);
-			request.setAttribute("msg", "You are now registered, please login below");
-			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
+		if(s.validateEmail(pincode, mail)) {
+			s.removePinFromDatabase(mail);
+			request.setAttribute("msg", "You are now registered, please login");
+			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp?mail="+mail); // TODO skal lige testes, ellers ændr til stien til login.jsp
 			view.forward(request, response);
 		}
 		else {
-			request.setAttribute("error", "Unable to validate pin");
-			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
+			request.setAttribute("error", "Unable to validate PIN");
+//			System.out.println(request.getRequestURI());
+			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp?mail="+mail);
 			view.forward(request, response);
 		}	
 	}

@@ -14,7 +14,7 @@
        <div id="navbar" class="collapse navbar-collapse">
          <ul class="nav navbar-nav">
            <li><a href="${pageContext.request.contextPath}/browse">Browse Pizz</a></li>
-		   <li><a href="${pageContext.request.contextPath}/basket">Basket <span class="badge">${basket.size}</span></a></li>
+		       <li><a href="${pageContext.request.contextPath}/basket">Basket <span class="badge">${basket.size}</span></a></li>
            <c:choose>
 	           	<c:when test="${email ne null}">
 		          	<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>

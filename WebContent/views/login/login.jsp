@@ -4,9 +4,14 @@
 <login:wrap title="Login">
 <h1>Login</h1>
 <c:if test="${msg != null}"><p class="msg">${msg}</p></c:if>
-<form method="POST" action="LoginController">
-	<input type="email" placeholder="enter email" name="email"><br>
-	<input type="password" placeholder="enter password" name="password"><br>
-	<input type="submit" value="login">
-</form>
+
+<div class="form-group">
+	<form method="POST" action="login">
+		<label for="email">Email:</label>
+		<input type="email" id="email" class="form-control" placeholder="Enter email" name="email"><br>
+		<label for="password">Password:</label>
+		<input type="password" id="password" class="form-control" placeholder="Enter password" name="password"><br>
+		<input type="submit" value="Login" class="btn btn-default"> or <a href="createuser">create new user</a>
+	</form>
+</div>
 </login:wrap>

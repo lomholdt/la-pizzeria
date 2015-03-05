@@ -32,7 +32,8 @@ public class CreateUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		RequestDispatcher view = request.getRequestDispatcher("views/register/create.jsp");
+		view.forward(request, response);
 	}
 
 	/**
@@ -53,13 +54,19 @@ public class CreateUserController extends HttpServlet {
 			Statements db = new Statements();
 			if(db.addUserToDatabase(email, password, name, address, zipcode, phonenumber)){
 				String pinCode = db.addPinToDatabase(email);
-				//SendMail mail = new SendMail();
-				//mail.sendPinCode(email, name, pinCode);	
+				SendMail mail = new SendMail();
+				mail.sendPinCode(email, name, pinCode);	
 			}
-			out.print("user valid");
+			System.out.print("User valid");
+			request.setAttribute("msg", "Please check your email to complete your registration");
+			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp?mail="+email);
+			view.forward(request, response);
 		}
 		else{
-			out.print("user not vaild");
+			System.out.print("User not vaild");
+			request.setAttribute("msg", "Something went wrong. Are you sure you entered correct information?");
+			RequestDispatcher view = request.getRequestDispatcher("views/register/create.jsp");
+			view.forward(request, response);
 		}
 	}
 
