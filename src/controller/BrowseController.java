@@ -33,23 +33,18 @@ public class BrowseController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");
-		
 		try {
 			int page = 1;
 			int pizzasPerPage = 10; 
 			if(request.getParameter("page") != null) page = Integer.parseInt(request.getParameter("page"));
-			String sortBy = sortBy(request);
+			String sortOrder = sortBy(request);
 			
 			int offset = (page-1) * pizzasPerPage;
 			
 			Statements stmts = new Statements();
 			
-			List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortBy);		
+			List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortOrder);		
 			int totalPizzas = stmts.getNumPizzas();
-			
 			int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
 			
 			request.setAttribute("pizzas", pizzas);
@@ -57,7 +52,7 @@ public class BrowseController extends HttpServlet {
 			request.setAttribute("page", page);
 			
 		} catch (Exception e) {
-			request.setAttribute("error", "Could not get pizzas..." + e.getMessage());
+			request.setAttribute("error", "Could not get pizzas...<br>" + e.getMessage());
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");

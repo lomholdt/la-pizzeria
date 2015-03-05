@@ -38,4 +38,10 @@ public class DBConnect {
     public PreparedStatement preparedStatement(String sql) throws Exception {
     	return getCon().prepareStatement(sql);
     }
+    
+    public ResultSet getData(String sql) throws Exception {
+        Statement state = getCon().createStatement();
+        ResultSet rs = state.executeQuery(sql);
+        return rs;
+    }
 }

@@ -109,14 +109,15 @@ public class Statements {
 		return false;
 	}
 	
-	public List<Pizza> getPizzas(int offset, int numberOfPizzas, String sortBy) throws Exception{
+	public List<Pizza> getPizzas(int offset, int pizzasPerPage, String sortBy) throws Exception{
 		try {
 			List<Pizza> pizzas = new ArrayList<Pizza>();
-			PreparedStatement pinstmt = c.preparedStatement("SELECT id, name, price, description FROM pizza ORDER BY ? LIMIT ?,?");
-			pinstmt.setString(1, sortBy);
-			pinstmt.setInt(2, offset);
-			pinstmt.setInt(3,  numberOfPizzas);
-			rs = pinstmt.executeQuery();
+//			PreparedStatement pinstmt = c.preparedStatement("SELECT id, name, price, description FROM pizza ORDER BY ? LIMIT ?,?");
+//			pinstmt.setString(1, sortBy);
+//			pinstmt.setInt(2, offset);
+//			pinstmt.setInt(3, pizzasPerPage);
+//			rs = pinstmt.executeQuery();
+			rs = c.getData("SELECT id, name, price, description FROM pizza ORDER BY " + sortBy + " LIMIT " + offset + ", " + pizzasPerPage);
 			
 			while(rs.next()){
 				Pizza p = new Pizza();
