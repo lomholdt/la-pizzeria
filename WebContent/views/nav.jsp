@@ -13,12 +13,13 @@
        <div id="navbar" class="collapse navbar-collapse">
          <ul class="nav navbar-nav">
            <li><a href="${pageContext.request.contextPath}/browse">Browse Pizz</a></li>
-           <li><a href="${pageContext.request.contextPath}/createuser">Create User</a></li>
            <c:choose>
 	           	<c:when test="${email ne null}">
 		           <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+		           <li><p class="navbar-text">Logged in as ${email}</p></li>
 	           	</c:when>
 	           	<c:otherwise>
+			       	<li><a href="${pageContext.request.contextPath}/createuser">Create User</a></li>
 	           		<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
 	           	</c:otherwise>
            </c:choose>

@@ -25,27 +25,27 @@
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>UserController</servlet-name>
-    <servlet-class>controller.UserController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UserController</servlet-name>
-    <url-pattern>/createuser</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>CreateUserController</servlet-name>
     <servlet-class>controller.CreateUserController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CreateUserController</servlet-name>
-    <url-pattern>/createusercontroller</url-pattern>
+    <url-pattern>/createuser</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>ValidateMailController</servlet-name>
-    <servlet-class>controller.ValidateMailController</servlet-class>
+ <!-- <servlet>
+     <servlet-name>CreateUserController</servlet-name>
+    <servlet-class>controller.CreateUserController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ValidateMailController</servlet-name>
+    <servlet-name>CreateUserController</servlet-name>
+    <url-pattern>/createusercontroller</url-pattern>
+  </servlet-mapping> -->
+  <servlet>
+    <servlet-name>ValidatePinController</servlet-name>
+    <servlet-class>controller.ValidatePinController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidatePinController</servlet-name>
     <url-pattern>/validate</url-pattern>
   </servlet-mapping>
   <servlet>
