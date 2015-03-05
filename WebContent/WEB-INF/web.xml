@@ -2,20 +2,27 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>la-pizzeria</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
+  <error-page>
+		<error-code>404</error-code>
+		<location>/views/errors/404.jsp</location>
+  </error-page>
+  <mime-mapping>
+    <extension>ico</extension>
+    <mime-type>image/x-icon</mime-type>
+  </mime-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.ico</url-pattern>
+</servlet-mapping>
   <servlet>
     <servlet-name>MainController</servlet-name>
     <servlet-class>controller.MainController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MainController</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>UserController</servlet-name>
@@ -64,5 +71,12 @@
   <servlet-mapping>
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/logout</url-pattern>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>*.js</url-pattern>
   </servlet-mapping>
 </web-app>
