@@ -23,7 +23,6 @@ public class ValidatePinController extends HttpServlet {
      */
     public ValidatePinController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

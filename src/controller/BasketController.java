@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +31,6 @@ public class BasketController extends HttpServlet {
      */
     public BasketController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -38,21 +39,9 @@ public class BasketController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getBasket(request);
 		String itemId = request.getParameter("addToBasket");
-		System.out.println("itemId: " + itemId);
-		if (itemId != null && !itemId.isEmpty()){
-			int id = Integer.parseInt(itemId);
-			System.out.println("itemId is not null");
-			try {
-				Statements stmts = new Statements();
-				System.out.println("Created Statements object");
-				Item item = stmts.getPizza(id); // fails if id is invalid
-				System.out.println("Got pizza from database...");
-				basket.add(item);
-				System.out.println("Adding pizza to basket...");
-			} catch (Exception e) {
-				request.setAttribute("error", "Sorry, no Pizzas are available with id " + itemId);
-				e.getStackTrace();
-			}
+		
+		if(itemId != null && !itemId.isEmpty()){
+			if(!addToBasket(itemId)) request.setAttribute("error", "Sorry, no Pizzas are available with id " + itemId);
 		}
 		RequestDispatcher view = request.getRequestDispatcher("views/basket/basket.jsp");
 		view.forward(request, response);
@@ -65,10 +54,27 @@ public class BasketController extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	protected boolean addToBasket(String itemId){
+		Pattern p = Pattern.compile("\\d+");
+		Matcher m = p.matcher(itemId);
+		if(m.matches()){
+			int id = Integer.parseInt(itemId);
+			System.out.println("itemId is not null");
+			try {
+				Statements stmts = new Statements();
+				Item item = stmts.getPizza(id); // fails if id is invalid
+				basket.add(item);
+				return true;
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+	return false;
+	}
+	
 	protected Basket getBasket(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		if(session.getAttribute("basket") == null){
-			System.out.println("Session basket is null, creating new basket...");
 			basket = new Basket();
 			session.setAttribute("basket", basket);
 		}

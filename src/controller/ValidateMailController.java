@@ -21,7 +21,6 @@ public class ValidateMailController extends HttpServlet {
      */
     public ValidateMailController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

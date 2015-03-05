@@ -5,7 +5,7 @@
 
 <h1>Pizza Basket</h1>
 
-<c:if test="${error != null}"><p class="error">${error}</p></c:if>
+<c:if test="${error != null}"><p class="alert alert-warning">${error}</p></c:if>
 <c:choose>
 
 	<c:when test="${basket.size gt 0}">
