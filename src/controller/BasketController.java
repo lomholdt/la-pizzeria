@@ -38,11 +38,18 @@ public class BasketController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getBasket(request);
-		String itemId = request.getParameter("addToBasket");
+		String addId = request.getParameter("add");
+		String removeId = request.getParameter("remove");
 		
-		if(itemId != null && !itemId.isEmpty()){
-			if(!addToBasket(itemId)) request.setAttribute("error", "Sorry, no Pizzas are available with id " + itemId);
+		if(addId != null && !addId.isEmpty()){
+			if(!addToBasket(addId)) request.setAttribute("error", "Sorry, no Pizzas are available with id " + addId);
 		}
+		else if (removeId != null && !removeId.isEmpty()){
+			if(!removeFromBasket(removeId)) request.setAttribute("error", "Could not remove item " + removeId + " from basket.");
+		}
+		
+		
+		
 		RequestDispatcher view = request.getRequestDispatcher("views/basket/basket.jsp");
 		view.forward(request, response);
 	}
@@ -59,7 +66,6 @@ public class BasketController extends HttpServlet {
 		Matcher m = p.matcher(itemId);
 		if(m.matches()){
 			int id = Integer.parseInt(itemId);
-			System.out.println("itemId is not null");
 			try {
 				Statements stmts = new Statements();
 				Item item = stmts.getPizza(id); // fails if id is invalid
@@ -70,6 +76,20 @@ public class BasketController extends HttpServlet {
 			}
 		}
 	return false;
+	}
+	
+	protected boolean removeFromBasket(String removeId){
+		Pattern p = Pattern.compile("^\\d+$");
+		Matcher m = p.matcher(removeId);
+		if(m.matches()){
+			int id = Integer.parseInt(removeId);
+			try {
+				if(id < basket.getSize()) basket.remove(id); return true;
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		return false;
 	}
 	
 	protected Basket getBasket(HttpServletRequest request){

@@ -28,7 +28,7 @@
 			<td>${pizza.name}</td>
 			<td>${pizza.price}</td>
 			<td>${pizza.description}</td>
-			<td><a href="basket?addToBasket=${pizza.id}">Add to basket</a></td>
+			<td><a href="basket?add=${pizza.id}">Add to basket</a></td>
 		</tr>
 		</c:forEach>
 	</table>

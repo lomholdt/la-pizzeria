@@ -30,5 +30,4 @@ public class Basket {
 	public int getTotalPrice() {
 		return totalPrice;
 	}
-
 }

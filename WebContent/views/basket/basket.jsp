@@ -15,11 +15,12 @@
 				<th>Price</th>
 				<th>Description</th>
 			</tr>
-			<c:forEach var="item" items="${basket.list}">
+			<c:forEach var="item" items="${basket.list}" varStatus="i">
 			<tr>
 				<td>${item.name}</td>
 				<td>${item.price}</td>
 				<td>${item.description}</td>
+				<td><a href="basket?remove=${i.count - 1}">Remove from basket</a></td>
 			</tr>
 			</c:forEach>
 		</table>
