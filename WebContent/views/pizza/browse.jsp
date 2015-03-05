@@ -46,7 +46,7 @@
 	<!-- PAGINATION BEGIN -->
 	<ul class="pagination">
 	<c:if test="${page gt 1}">
-		<li><a href="browse?page=${page - 1}&sortBy=${sortBy}">&lt; Previous</a></li>
+		<li><a href="browse?page=${page - 1}&sortBy=${sortBy}"><span class="glyphicon glyphicon-menu-left"></span> Previous</a></li>
 	</c:if>
 	
 	<c:forEach begin="1" end="${totalPages}" var="i">
@@ -61,7 +61,7 @@
 	</c:forEach>
 	
 	<c:if test="${page lt totalPages}">
-		<li><a href="browse?page=${page + 1}&sortBy=${sortBy}">Next &gt;</a></li>
+		<li><a href="browse?page=${page + 1}&sortBy=${sortBy}">Next <span class="glyphicon glyphicon-menu-right"></span></a></li>
 	</c:if>
 	</ul>
 </c:if>

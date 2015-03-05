@@ -30,7 +30,7 @@ public class SendMail{
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(email));
             message.setSubject("Welcome to La Pizzeria - please verify your account");
-            message.setContent("Dear "+ name +","
+            message.setContent("Dear "+ name +", "
                 + "</br>Please verify your account by using the pincode below."
                 + "</br>Insert your pincode, <b>" + pincode + "</b>, in the following link: <a href=\"http://localhost:8080/la-pizzeria/validate?mail="+email+"\">Click here</a>", "text/html; charset=utf-8");
             
