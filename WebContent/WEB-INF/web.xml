@@ -5,8 +5,8 @@
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
   <error-page>
-		<error-code>404</error-code>
-		<location>/views/errors/404.jsp</location>
+    <error-code>404</error-code>
+    <location>/views/errors/404.jsp</location>
   </error-page>
   <mime-mapping>
     <extension>ico</extension>
@@ -15,7 +15,7 @@
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.ico</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
   <servlet>
     <servlet-name>MainController</servlet-name>
     <servlet-class>controller.MainController</servlet-class>
@@ -64,7 +64,7 @@
     <servlet-name>BrowseController</servlet-name>
     <url-pattern>/browse</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>LogoutController</servlet-name>
     <servlet-class>controller.LogoutController</servlet-class>
   </servlet>

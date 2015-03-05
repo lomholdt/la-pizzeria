@@ -1,6 +1,6 @@
 package model;
 
-public class Pizza {
+public class Pizza implements Item {
 	
 	private int pizzaid;
 	private String name;
