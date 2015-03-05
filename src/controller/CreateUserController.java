@@ -54,8 +54,8 @@ public class CreateUserController extends HttpServlet {
 			Statements db = new Statements();
 			if(db.addUserToDatabase(email, password, name, address, zipcode, phonenumber)){
 				String pinCode = db.addPinToDatabase(email);
-				SendMail mail = new SendMail();
-				mail.sendPinCode(email, name, pinCode);	
+				//SendMail mail = new SendMail();
+				//mail.sendPinCode(email, name, pinCode);	
 			}
 			out.print("user valid");
 		}
