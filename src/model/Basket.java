@@ -5,12 +5,8 @@ import java.util.List;
 
 public class Basket {
 	
-	List<Item> basket;
+	public List<Item> basket = new ArrayList<Item>();
 	private int totalPrice;
-	
-	public Basket(){
-		basket = new ArrayList<Item>();
-	}
 	
 	public void add(Item i){
 		totalPrice += i.getPrice();
@@ -23,8 +19,12 @@ public class Basket {
 		basket.remove(i);
 	}
 
-	public int getBasketSize() {
+	public int getSize() {
 		return basket.size();
+	}
+	
+	public List<Item> getList(){
+		return basket;
 	}
 
 	public int getTotalPrice() {

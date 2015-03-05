@@ -72,6 +72,22 @@
     <servlet-name>LogoutController</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>BasketController</servlet-name>
+    <servlet-class>controller.BasketController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BasketController</servlet-name>
+    <url-pattern>/basket</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.css</url-pattern>
