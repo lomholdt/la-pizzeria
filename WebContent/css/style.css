@@ -5,6 +5,11 @@ body {
 .glyphicon.glyphicon-remove-circle{
 	font-size: 20px;
 }
+
 .glyphicon.glyphicon-plus-sign{
 	font-size: 20px;
+}
+
+.logo{
+	width: 75%;
 }
