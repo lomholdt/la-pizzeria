@@ -7,7 +7,12 @@
 <p>Items in basket: <b>${basket.size}</b></p>
 <p>Total: <b>${basket.totalPrice}</b></p>
 
-<c:if test="${error != null}"><p class="alert alert-warning">${error}</p></c:if>
+<c:if test="${error != null}">
+	<div class="alert alert-warning">
+		<span class="glyphicon glyphicon-exclamation-sign"></span>
+		${error}
+	</div>
+</c:if>
 <c:choose>
 
 	<c:when test="${basket.size gt 0}">
@@ -23,14 +28,16 @@
 				<td>${item.name}</td>
 				<td>${item.price}</td>
 				<td>${item.description}</td>
-				<td><a href="basket?remove=${i.count - 1}">Remove from basket</a></td>
+				<td><a href="basket?remove=${i.count - 1}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 			</tr>
 			</c:forEach>
 		</table>
 	</c:when>
 	<c:otherwise>
-	<div class="alert alert-info">Your basket is empty...</div>
-	
+	<div class="alert alert-info">
+		<span class="glyphicon glyphicon-shopping-cart"></span>
+		Your basket is empty
+	</div>
 	</c:otherwise>
 
 </c:choose>

@@ -1,3 +1,10 @@
 body {
 	padding-top: 50px;
 }
+
+.glyphicon.glyphicon-remove-circle{
+	font-size: 20px;
+}
+.glyphicon.glyphicon-plus-sign{
+	font-size: 20px;
+}
