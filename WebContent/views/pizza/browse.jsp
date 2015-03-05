@@ -22,6 +22,7 @@
 			<th>Name</th>
 			<th>Price</th>
 			<th>Description</th>
+			<th></th>
 		</tr>
 		<c:forEach var="pizza" items="${pizzas}">
 		<tr>
