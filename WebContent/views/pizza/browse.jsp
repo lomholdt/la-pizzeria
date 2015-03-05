@@ -10,14 +10,14 @@
 <!-- PIZZA BROWSER BEGIN -->
 <c:if test="${error != null}"><p class="error">${error}</p></c:if>
 <c:if test="${totalPages gt 0}">
+	<form method="GET" action="">
+		<select name="sortBy" onchange="this.form.submit()">
+			<option selected="selected" disabled="disabled">Sort By</option>
+			<option value="name">Name</option>
+			<option value="price">Price</option>
+		</select>
+	</form>
 	<table class="table">
-		<form method="GET" action="">
-			<select name="sortBy" onchange="this.form.submit()">
-				<option selected="selected" disabled="disabled">Sort By</option>
-				<option value="name">Name</option>
-				<option value="price">Price</option>
-			</select>
-		</form>
 		<tr>
 			<th>Name</th>
 			<th>Price</th>
