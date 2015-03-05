@@ -4,9 +4,6 @@ import java.util.*;
 
 import javax.mail.*;
 import javax.mail.internet.*;
-import javax.activation.*;
-
-import sun.rmi.server.Activation;
 
 public class SendMail{
 	
@@ -29,13 +26,13 @@ public class SendMail{
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("noReply@laPizzeria.it"));
+            message.setFrom(new InternetAddress("noreply@lapizzeria.it"));
             message.setRecipients(Message.RecipientType.TO,
                 InternetAddress.parse(email));
             message.setSubject("Welcome to La Pizzeria - please verify your account");
-            message.setContent("Dear "+ name
+            message.setContent("Dear "+ name +","
                 + "</br>Please verify your account by using the pincode below."
-                + "</br>Insert your pincode: <b>" + pincode + "</b>\n in the following link: <a href=\"http://localhost:8080/la-pizzeria/validate?email="+email+"\">Click here</a>", "text/html; charset=utf-8");
+                + "</br>Insert your pincode, <b>" + pincode + "</b>, in the following link: <a href=\"http://localhost:8080/la-pizzeria/validate?email="+email+"\">Click here</a>", "text/html; charset=utf-8");
             
             Transport.send(message);
             System.out.println("Done");
