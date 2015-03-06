@@ -159,8 +159,30 @@ public class Statements {
 				return p;
 			}
 		} catch (Exception e) {
-			throw e;
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
+	
+	public User getUser(String email){
+		try{
+			PreparedStatement pstmt = c.preparedStatement("SELECT id,email,name,address,zipcode,phonenumber FROM user WHERE email='"+email+"'");
+			rs = pstmt.executeQuery();
+			if(rs.next())	{
+				User currentUser = new User();
+				currentUser.setId(rs.getInt("id"));
+				currentUser.setEmail(rs.getString("email"));
+				currentUser.setName(rs.getString("name"));
+				currentUser.setAddress(rs.getString("address"));
+				currentUser.setZipcode(rs.getInt("id"));
+				currentUser.setPhoneNumber(rs.getInt("phonenumber"));
+				return currentUser;
+			}
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		return null;
+		
+	}
+	
 }

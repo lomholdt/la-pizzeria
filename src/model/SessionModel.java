@@ -5,9 +5,9 @@ import javax.servlet.http.HttpSession;
 
 public class SessionModel {
 	
-	public SessionModel(HttpServletRequest r, String email) {
+	public SessionModel(HttpServletRequest r, User user) {
 		HttpSession session = r.getSession();
-		session.setAttribute("email", email);
+		session.setAttribute("user", user);
 		session.setMaxInactiveInterval(15*60);
 	}
 }

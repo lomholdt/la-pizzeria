@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.SessionModel;
 import model.Statements;
+import model.User;
 
 /**
  * Servlet implementation class LoginController
@@ -39,12 +40,12 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Statements s = new Statements();
-				
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		if(s.login(email, password)) {
-			new SessionModel(request, email);
+			User currentUser = s.getUser(email);
+			new SessionModel(request, currentUser);
 			response.sendRedirect("browse");
 		}
 		else {
