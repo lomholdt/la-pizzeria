@@ -3,7 +3,7 @@
 
 <login:wrap title="Login">
 <h1>Login</h1>
-<c:if test="${msg != null}"><p class="msg">${msg}</p></c:if>
+<c:if test="${msg != null}"><div class="alert alert-warning"><p class="msg">${msg}</p></div></c:if>
 
 <div class="form-group">
 	<form method="POST" action="login">
