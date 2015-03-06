@@ -1,7 +1,7 @@
 <%@ taglib prefix="create" tagdir="/WEB-INF/tags" %>
 <create:wrap title="Create User">
 <h1>Create user</h1>
-<c:if test="${msg != null}"><p class="msg">${msg}</p></c:if>
+<c:if test="${msg != null}"><div class="alert alert-warning"><p class="msg">${msg}</p></div></c:if>
 <div class="form-group">
 	<form method="POST" action="createuser">
 		<label for="email">Email:</label>
