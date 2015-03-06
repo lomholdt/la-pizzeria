@@ -45,13 +45,13 @@ public class ValidatePinController extends HttpServlet {
 		if(s.validateEmail(pincode, mail)) {
 			s.removePinFromDatabase(mail);
 			request.setAttribute("msg", "You are now registered, please login");
-			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp?mail="+mail); // TODO skal lige testes, ellers ændr til stien til login.jsp
-			view.forward(request, response);
+			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp"); // TODO skal lige testes, ellers ï¿½ndr til stien til login.jsp
 		}
 		else {
 			request.setAttribute("error", "Unable to validate PIN");
+			request.setAttribute("mail", mail);
 //			System.out.println(request.getRequestURI());
-			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp?mail="+mail);
+			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
 			view.forward(request, response);
 		}	
 	}
