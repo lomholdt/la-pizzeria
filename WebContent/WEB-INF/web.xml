@@ -43,15 +43,6 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>CreateUserController</servlet-name>
-    <servlet-class>controller.CreateUserController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateUserController</servlet-name>
-    <url-pattern>/createusercontroller</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
     <servlet-name>ValidatePinController</servlet-name>
     <servlet-class>controller.ValidatePinController</servlet-class>
   </servlet>
