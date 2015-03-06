@@ -8,9 +8,10 @@ public class User {
 	private String address;
 	private int zipcode;
 	private int phoneNumber;
+	private String role;
 	
 	public User(String email, String password, String name, String address,
-			int zipcode, int phoneNumber) {
+			int zipcode, int phoneNumber, String role) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -18,6 +19,7 @@ public class User {
 		this.address = address;
 		this.zipcode = zipcode;
 		this.phoneNumber = phoneNumber;
+		this.role = role;
 	}
 	
 	public int getId() {
@@ -62,5 +64,10 @@ public class User {
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public String getRole(){
+		return role;
+	}
+	
 	
 }
