@@ -53,14 +53,26 @@ public class Statements {
 				pstmt.setString(5, z);
 				pstmt.setString(6, ph);				
 				pstmt.executeUpdate();
-				
+				addUserRole(e, "user");
 				return true;
-
 		} catch (Exception e1) {
 //			e1.printStackTrace();
 			System.out.print(e1.getMessage());
-			return false;
 		}
+		return false;
+	}
+	
+	public boolean addUserRole(String email, String role){
+		try {
+			pstmt = c.preparedStatement("INSERT INTO role (email, role) VALUES (?, ?)");
+			pstmt.setString(1, email);
+			pstmt.setString(2, role);
+			pstmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}		
+		return false;
 	}
 	
 	public String addPinToDatabase(String email){

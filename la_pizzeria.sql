@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `pizza` (
   `id` int(11) NOT NULL auto_increment,
-  `name` varchar(45) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
-  `description` varchar(45) NOT NULL,
+  `description` varchar(600) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB
 
 -- --------------------------------------------------------
 
@@ -41,28 +41,39 @@ CREATE TABLE IF NOT EXISTS `pizza` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL auto_increment,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `address` varchar(45) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `zipcode` int(11) NOT NULL,
   `phonenumber` int(11) NOT NULL,
   `active` boolean NOT NULL DEFAULT false,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY  (email)
+) ENGINE=InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `pin` (
-  `useremail` varchar(45) NOT NULL,
+  `useremail` varchar(100) NOT NULL,
   `pincode` int(4) NOT NULL,
   PRIMARY KEY (`useremail`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS role (
+  email varchar(100) NOT NULL,
+  role varchar(45) NOT NULL,
+  PRIMARY KEY (email, role),
+  FOREIGN KEY (email) REFERENCES user(email) ON DELETE CASCADE
+) Engine = InnoDB;
+
+
+
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 
 /* INSERT SOME PIZZAS */
