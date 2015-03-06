@@ -182,7 +182,18 @@ public class Statements {
 			System.out.println(e.getMessage());
 		}
 		return null;
-		
 	}
 	
+	public boolean checkEmail(String email){
+		try{
+			PreparedStatement pstmt = c.preparedStatement("SELECT email FROM user WHERE email='"+email+"'");
+			rs = pstmt.executeQuery();
+			if(!rs.next()){
+				return true;
+			}
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
 }
