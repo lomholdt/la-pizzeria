@@ -25,6 +25,8 @@
 	           		<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
 	           	</c:otherwise>
            </c:choose>
+           <c:if test="${user.role ne admin}"></c:if>
+	           		<li><a href="${pageContext.request.contextPath}/addpizza">Add New Pizza</a></li>
          </ul>
        </div><!--/.nav-collapse -->
      </div>

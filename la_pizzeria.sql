@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `pizza` (
   `price` int(11) NOT NULL,
   `description` varchar(600) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -49,14 +49,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `phonenumber` int(11) NOT NULL,
   `active` boolean NOT NULL DEFAULT false,
   PRIMARY KEY  (email)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE IF NOT EXISTS `pin` (
   `useremail` varchar(100) NOT NULL,
-  `pincode` int(4) NOT NULL,
+  `pincode` varchar(4) NOT NULL,
   PRIMARY KEY (`useremail`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE IF NOT EXISTS role (
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS role (
   role varchar(45) NOT NULL,
   PRIMARY KEY (email, role),
   FOREIGN KEY (email) REFERENCES user(email) ON DELETE CASCADE
-) Engine = InnoDB;
+) Engine = InnoDB DEFAULT CHARSET=latin1;
 
 
 

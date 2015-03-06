@@ -178,23 +178,23 @@ public class Statements {
 	
 	public User getUser(String email){
 		try{
-			PreparedStatement pstmt = c.preparedStatement("SELECT id,email,name,address,zipcode,phonenumber FROM user WHERE email='"+email+"'");
+			PreparedStatement pstmt = c.preparedStatement("SELECT user.email,user.name,user.address,user.zipcode,user.phonenumber, role.role FROM user, role WHERE user.email=?");
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			if(rs.next())	{
+			if(rs.next()){
 				User currentUser = new User();
-				currentUser.setId(rs.getInt("id"));
 				currentUser.setEmail(rs.getString("email"));
 				currentUser.setName(rs.getString("name"));
 				currentUser.setAddress(rs.getString("address"));
-				currentUser.setZipcode(rs.getInt("id"));
+				currentUser.setZipcode(rs.getInt("zipcode"));
 				currentUser.setPhoneNumber(rs.getInt("phonenumber"));
+				currentUser.setRole(rs.getString("role"));
 				return currentUser;
 			}
 		} catch (Exception e){
 			System.out.println(e.getMessage());
 		}
 		return null;
-		
 	}
 	
 }
