@@ -3,6 +3,9 @@ package model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 public class Authenticator {
 	
 	public boolean isValidUser(String email, String password, String name, String address, String zipcode, String phonenumber){
@@ -70,4 +73,32 @@ public class Authenticator {
 		return true;
 	}
 	
+	public boolean isValidPizzaName(String name){
+		Pattern p = Pattern.compile(".+", Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(name);
+		if(!m.matches()){return false;}
+		
+		return true;
+	}
+	
+	public boolean isValidPizzaPrice(String price){
+		Pattern p = Pattern.compile("^\\d+$", Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(price);
+		if(!m.matches()){return false;}
+		
+		return true;	
+	}
+	
+	public boolean isValidPizzaDescription(String description){
+		Pattern p = Pattern.compile(".+", Pattern.CASE_INSENSITIVE);
+		Matcher m = p.matcher(description);
+		if(!m.matches()){return false;}
+		
+		return true;	
+	}
+	
+	public boolean isAdmin(User u){
+		if (u.getRole().equals("admin")) return true;
+		return false;
+	}
 }

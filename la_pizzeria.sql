@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `pizza` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
-  `description` varchar(600) NOT NULL,
+  `description` varchar(6000) NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

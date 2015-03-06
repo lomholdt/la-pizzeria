@@ -3,6 +3,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -174,6 +175,39 @@ public class Statements {
 			System.out.println(e.getMessage());
 		}
 		return null;
+	}
+	
+	public boolean addPizza(String name, int price, String description){
+		try{
+			PreparedStatement pstmt = c.preparedStatement("INSERT INTO pizza (name, price, description) VALUES (?, ?, ?);");
+			pstmt.setString(1, name);
+			pstmt.setInt(2, price);
+			pstmt.setString(3,  description);
+			pstmt.executeUpdate();
+			
+			return true;
+		
+		}catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean removePizza(int removeId){
+		try {
+			PreparedStatement pstmt = c.preparedStatement("DELETE FROM la_pizzeria.pizza WHERE pizza.id = ?");
+			pstmt.setInt(1, removeId);
+			pstmt.executeUpdate();
+			System.out.println("PIZZA REMOVED...");
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println("Could not remove pizza!!!");
+			e.printStackTrace();
+		}
+		
+		
+		return false;
 	}
 	
 	public User getUser(String email){

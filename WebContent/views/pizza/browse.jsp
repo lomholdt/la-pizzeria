@@ -14,6 +14,12 @@
 		${error}
 	</div>
 </c:if>
+<c:if test="${msg != null}">
+	<div class="alert alert-success">
+		<span class="glyphicon glyphicon-exclamation-sign"></span>
+		${msg}
+	</div>
+</c:if>
 <c:if test="${totalPages gt 0}">
 	<form method="GET" action="">
 		<select name="sortBy" onchange="this.form.submit()">
@@ -38,6 +44,9 @@
 				<td>${pizza.price}</td>
 				<td>${pizza.description}</td>
 				<td><a href="basket?add=${pizza.id}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
+				<c:if test="${user.role ne null}">
+					<c:if test="${user.role eq 'admin'}"><td><a href="addpizza?remove=${pizza.id}">Remove</a></td></c:if>
+				</c:if>
 			</tr>
 			</c:forEach>
 		</tbody>
