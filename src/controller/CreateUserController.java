@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,9 +44,7 @@ public class CreateUserController extends HttpServlet {
 		String address = request.getParameter("address");
 		String zipcode = request.getParameter("zipcode");
 		String phonenumber = request.getParameter("phonenumber");
-		
-		PrintWriter out = response.getWriter();
-		
+				
 		Authenticator auth = new Authenticator();
 		if(auth.isValidUser(email, password, name, address, zipcode, phonenumber)){
 			Statements db = new Statements();
