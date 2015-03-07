@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.security.*;
 
 
 public class Statements {
@@ -27,6 +28,12 @@ public class Statements {
     
     public boolean login(String email, String pwd) {
     	try {
+			pwd = hash256(pwd);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	try {
     		pstmt = c.preparedStatement("SELECT email, password, active FROM user WHERE email =?;");
     		pstmt.setString(1, email);
     		rs = pstmt.executeQuery();
@@ -45,6 +52,13 @@ public class Statements {
    
 	public boolean addUserToDatabase(String e, String p, String n, String a, String z, String ph){
 		try {
+			p = hash256(p);
+			System.out.println(p);
+		} catch (NoSuchAlgorithmException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		try {
 				pstmt = c.preparedStatement("INSERT INTO user (email, password, name, address, zipcode, phonenumber) "
 					+ "VALUES (?, ?, ?, ?, ?, ?);");
 				pstmt.setString(1, e);
@@ -62,6 +76,17 @@ public class Statements {
 		}
 		return false;
 	}
+	
+	public static String hash256(String data) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        md.update(data.getBytes());
+        return bytesToHex(md.digest());
+    }
+    public static String bytesToHex(byte[] bytes) {
+        StringBuffer result = new StringBuffer();
+        for (byte byt : bytes) result.append(Integer.toString((byt & 0xff) + 0x100, 16).substring(1));
+        return result.toString();
+    }
 	
 	public boolean addUserRole(String email, String role){
 		try {
