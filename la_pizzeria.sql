@@ -67,15 +67,12 @@ CREATE TABLE IF NOT EXISTS role (
 ) Engine = InnoDB DEFAULT CHARSET=latin1;
 
 
-
-
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-INSERT INTO user(email, password, name, address, zipcode, phonenumber, active) VALUES('admin@admin.com', 'abcdEFG123#', 'John Doe', 'Høkerboderne 9', '1712', '22275898', '1');
+INSERT INTO user(email, password, name, address, zipcode, phonenumber, active) VALUES('admin@admin.com', '3c11440050cbedc97d35541159636783b81482d81880a4ef22cc7e6c460bdcb8', 'John Doe', 'Høkerboderne 9', '1712', '22275898', '1');
 INSERT INTO role(email, role) VALUES('admin@admin.com', 'admin');
 
 

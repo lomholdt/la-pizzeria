@@ -189,7 +189,7 @@ public class Statements {
 			pinstmt.setInt(1, withId);
 			rs = pinstmt.executeQuery();
 			if(rs.next()) {
-				Pizza p = new Pizza();
+				Pizza p = new Pizza();	
 				p.setId(rs.getInt("id"));
 				p.setName(rs.getString("name"));
 				p.setPrice(rs.getInt("price"));
@@ -237,8 +237,9 @@ public class Statements {
 	
 	public User getUser(String email){
 		try{
-			PreparedStatement pstmt = c.preparedStatement("SELECT user.email,user.name,user.address,user.zipcode,user.phonenumber, role.role FROM user, role WHERE user.email=?");
+			PreparedStatement pstmt = c.preparedStatement("SELECT user.email,user.name,user.address,user.zipcode,user.phonenumber, role.role FROM user, role WHERE user.email=? AND role.email=?");
 			pstmt.setString(1, email);
+			pstmt.setString(2, email);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				User currentUser = new User();

@@ -14,11 +14,21 @@
        <div id="navbar" class="collapse navbar-collapse">
          <ul class="nav navbar-nav">
            <li><a href="${pageContext.request.contextPath}/browse">Browse Pizz</a></li>
-		       <li><a href="${pageContext.request.contextPath}/basket">Basket <span class="badge">${basket.size}</span></a></li>
+		       <li><a href="${pageContext.request.contextPath}/basket">Basket 
+		       <span class="badge">
+		       		<c:choose>
+		       			<c:when test="${basket eq null}">
+		       			0
+		       			</c:when>
+		       		<c:otherwise>
+		       			${basket.size}
+		       		</c:otherwise>
+		       		</c:choose>
+		       </span></a></li>
            <c:choose>
 	           	<c:when test="${user ne null}">
 		          	<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
-		          	<li><p class="navbar-text">Logged in as ${user.name}</p></li>
+		          	<li><p class="navbar-text">Logged in as <a href="#">${user.name}</a></p></li>
 	           	</c:when>
 	           	<c:otherwise>
 	           		<li><a href="${pageContext.request.contextPath}/createuser">Create User</a></li>

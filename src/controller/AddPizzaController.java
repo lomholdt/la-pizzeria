@@ -98,8 +98,12 @@ public class AddPizzaController extends HttpServlet {
 	private boolean isAllowed(HttpServletRequest request) throws IOException, ServletException{
 		HttpSession s = request.getSession();
 		User u = (User)s.getAttribute("user");
-		if(u == null){ return false;
-		} else if (!auth.isAdmin(u)) return false;
+		if(u == null){ 
+			return false;
+		}
+		else if (!auth.isAdmin(u)){
+			return false;
+		}
 		return true;
 	}
 }
