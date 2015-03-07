@@ -189,7 +189,7 @@ public class Statements {
 			pinstmt.setInt(1, withId);
 			rs = pinstmt.executeQuery();
 			if(rs.next()) {
-				Pizza p = new Pizza();
+				Pizza p = new Pizza();	
 				p.setId(rs.getInt("id"));
 				p.setName(rs.getString("name"));
 				p.setPrice(rs.getInt("price"));
