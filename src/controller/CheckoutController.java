@@ -38,7 +38,7 @@ public class CheckoutController extends HttpServlet {
 			view.forward(request, response);
 		}
 		else{
-			request.setAttribute("msgOK", "please log in to checkout");
+			request.setAttribute("msgOK", "Please log in to checkout");
 			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
 			view.forward(request, response);
 		}
