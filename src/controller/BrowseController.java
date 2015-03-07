@@ -36,7 +36,7 @@ public class BrowseController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			
-			new FlashMessage().setFlashMessageInUrl(request, "msg"); // Flash message hack for servlets! :) 
+			new FlashMessage().getFlashMessage(request, "msg"); // Flash message hack for servlets! :) 
 			
 			int page = 1;
 			int pizzasPerPage = 10; 
