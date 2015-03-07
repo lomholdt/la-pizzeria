@@ -28,7 +28,7 @@
            <c:choose>
 	           	<c:when test="${user ne null}">
 		          	<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
-		          	<li><p class="navbar-text">Logged in as <a href="#">${user.name}</a></p></li>
+		          	<li><p class="navbar-text">Logged in as ${user.name}</p></li>
 	           	</c:when>
 	           	<c:otherwise>
 	           		<li><a href="${pageContext.request.contextPath}/createuser">Create user</a></li>
