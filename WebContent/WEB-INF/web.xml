@@ -85,12 +85,12 @@
     <url-pattern>/receipt</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>AddPizzaController</servlet-name>
-    <servlet-class>controller.AddPizzaController</servlet-class>
+    <servlet-name>PizzaController</servlet-name>
+    <servlet-class>controller.PizzaController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AddPizzaController</servlet-name>
-    <url-pattern>/addpizza</url-pattern>
+    <servlet-name>PizzaController</servlet-name>
+    <url-pattern>/pizza</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>CheckoutController</servlet-name>

@@ -18,8 +18,8 @@ import model.User;
 /**
  * Servlet implementation class AddPizzaController
  */
-@WebServlet("/AddPizzaController")
-public class AddPizzaController extends HttpServlet {
+@WebServlet("/PizzaController")
+public class PizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Authenticator auth = new Authenticator();
 	Statements s = new Statements();
@@ -27,7 +27,7 @@ public class AddPizzaController extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPizzaController() {
+    public PizzaController() {
         super();
     }
 

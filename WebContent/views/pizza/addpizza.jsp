@@ -6,7 +6,7 @@
 <c:if test="${error != null}"><div class="alert alert-warning">${error}</div></c:if>
 <c:if test="${msg != null}"><div class="alert alert-success">${msg}</div></c:if>
 <div class="form-group">
-	<form method="POST" action="addpizza">
+	<form method="POST" action="pizza">
 		<label for="text">Name: </label>
 		<input type="text" id="name" class="form-control" placeholder="Name" name="name"><br>
 		
