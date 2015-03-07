@@ -29,8 +29,7 @@ public class ReceiptController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String allowCheckout = request.getParameter("allowCheckout");
-		
-		
+		System.out.println("her");
 		if(allowCheckout!= null && allowCheckout.equals("true")){
 		RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
 		view.forward(request, response);
