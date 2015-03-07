@@ -12,7 +12,7 @@ public class FlashMessage {
 		session.setAttribute(parameter, message);
 	}
 	
-	public void setFlashMessageInUrl(HttpServletRequest request, String parameter){
+	public void getFlashMessage(HttpServletRequest request, String parameter){
 		HttpSession session = request.getSession();
 		request.setAttribute(parameter, (String) session.getAttribute(parameter));
 		request.getSession().removeAttribute(parameter);
