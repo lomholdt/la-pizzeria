@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import model.Basket;
 import model.FlashMessage;
 
 /**
@@ -40,7 +38,7 @@ public class CheckoutController extends HttpServlet {
 			view.forward(request, response);
 		}
 		else{
-			request.setAttribute("msgOK", "Please log in to checkout");
+			request.setAttribute("msg", "Please log in to checkout");
 			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
 			view.forward(request, response);
 		}
