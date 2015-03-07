@@ -19,9 +19,6 @@ public class DBConnect {
 			String connectionUrl = "jdbc:mysql://mysql.itu.dk:3306/la_pizzeria";
 			String connectionUser = "la_pizzeria";
 			String connectionPassword = "pizzatime";
-//			String connectionUrl = "jdbc:mysql://localhost:3306/la_pizzeria";
-//			String connectionUser = "jonas";
-//			String connectionPassword = "28608374";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 		} catch (Exception e) {
 			e.printStackTrace();

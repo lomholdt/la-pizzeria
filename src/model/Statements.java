@@ -29,7 +29,6 @@ public class Statements {
     	try {
 			pwd = hash256(pwd);
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	try {
@@ -54,7 +53,6 @@ public class Statements {
 			p = hash256(p);
 			System.out.println(p);
 		} catch (NoSuchAlgorithmException e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
 		try {
@@ -70,7 +68,6 @@ public class Statements {
 				addUserRole(e, "user");
 				return true;
 		} catch (Exception e1) {
-//			e1.printStackTrace();
 			System.out.print(e1.getMessage());
 		}
 		return false;
@@ -149,11 +146,6 @@ public class Statements {
 	public List<Pizza> getPizzas(int offset, int pizzasPerPage, String sortBy) throws Exception{
 		try {
 			List<Pizza> pizzas = new ArrayList<Pizza>();
-//			PreparedStatement pinstmt = c.preparedStatement("SELECT id, name, price, description FROM pizza ORDER BY ? LIMIT ?,?");
-//			pinstmt.setString(1, sortBy);
-//			pinstmt.setInt(2, offset);
-//			pinstmt.setInt(3, pizzasPerPage);
-//			rs = pinstmt.executeQuery();
 			rs = c.getData("SELECT id, name, price, description FROM pizza ORDER BY " + sortBy + " LIMIT " + offset + ", " + pizzasPerPage);
 			
 			while(rs.next()){

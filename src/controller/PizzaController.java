@@ -91,7 +91,6 @@ public class PizzaController extends HttpServlet {
 		request.setAttribute("msg", name + " pizza was added to inventory!");
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
 		view.forward(request, response);
-//		response.sendRedirect("browse");
 	}
 	
 	private boolean isAllowed(HttpServletRequest request) throws IOException, ServletException{
