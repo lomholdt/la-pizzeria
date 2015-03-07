@@ -2,6 +2,14 @@
 Interactive Web Services with Java and XML 2015
 <img src="http://i.imgur.com/IhEnpDL.png">
 
+## Usage
+We have created one test user for administrative purposes with the following credentials:
+```
+user: admin@admin.com
+pass: abcdEFG123#
+```
+The application is tested on Apache Tomcat 8.0. All external dependencies have been added locally to the lib archive. Please note that the email containing the pin for user activation often get's caught by spam filters. 
+
 ## Use Cases
 * **Register:** The customer should be able to register at the La Pizzeria web
 shop and create a profile with valid email (as userid), password, name,
