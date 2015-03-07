@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Basket;
+import model.FlashMessage;
 
 /**
  * Servlet implementation class CheckoutController
@@ -33,7 +34,8 @@ public class CheckoutController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		if (session.getAttribute("user") != null){
-			request.setAttribute("allowCheckout", "true");
+			FlashMessage msg = new FlashMessage();
+			msg.sendFlashMessage(request, "true", "allowCheckout");
 			RequestDispatcher view = request.getRequestDispatcher("views/checkout/checkout.jsp");
 			view.forward(request, response);
 		}

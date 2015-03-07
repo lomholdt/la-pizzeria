@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.FlashMessage;
+
 /**
  * Servlet implementation class ReceiptController
  */
@@ -21,15 +23,15 @@ public class ReceiptController extends HttpServlet {
      */
     public ReceiptController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String allowCheckout = request.getParameter("allowCheckout");
-		System.out.println("her");
+		String allowCheckout = (String) request.getSession().getAttribute("allowCheckout");
+		FlashMessage msg = new FlashMessage();
+		msg.setFlashMessageInUrl(request, "allowCheckout"); 
 		if(allowCheckout!= null && allowCheckout.equals("true")){
 		RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
 		view.forward(request, response);
