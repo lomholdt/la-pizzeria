@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.FlashMessage;
 import model.Statements;
 
 /**
@@ -44,13 +45,13 @@ public class ValidatePinController extends HttpServlet {
 		
 		if(s.validateEmail(pincode, mail)) {
 			s.removePinFromDatabase(mail);
-			request.setAttribute("msg", "You are now registered, please login");
-			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp"); // TODO skal lige testes, ellers �ndr til stien til login.jsp
+			FlashMessage message = new FlashMessage();
+			message.sendFlashMessage(request, "jonas har en pik", "msgOK");
+			response.sendRedirect("login");
 		}
 		else {
 			request.setAttribute("error", "Unable to validate PIN");
 			request.setAttribute("mail", mail);
-//			System.out.println(request.getRequestURI());
 			RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp");
 			view.forward(request, response);
 		}	

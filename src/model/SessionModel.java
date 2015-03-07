@@ -10,4 +10,5 @@ public class SessionModel {
 		session.setAttribute("user", user);
 		session.setMaxInactiveInterval(15*60);
 	}
+	
 }
