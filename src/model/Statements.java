@@ -202,7 +202,7 @@ public class Statements {
 		return null;
 	}
 	
-	public boolean addPizza(String name, int price, String description){
+	public boolean addPizza(String name, int price, String description) throws Exception{
 		try{
 			PreparedStatement pstmt = c.preparedStatement("INSERT INTO pizza (name, price, description) VALUES (?, ?, ?);");
 			pstmt.setString(1, name);
@@ -213,9 +213,8 @@ public class Statements {
 			return true;
 		
 		}catch (Exception e1) {
-			e1.printStackTrace();
+			throw e1;
 		}
-		return false;
 	}
 	
 	public boolean removePizza(int removeId){

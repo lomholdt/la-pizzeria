@@ -18,8 +18,8 @@ import model.User;
 /**
  * Servlet implementation class AddPizzaController
  */
-@WebServlet("/AddPizzaController")
-public class AddPizzaController extends HttpServlet {
+@WebServlet("/PizzaController")
+public class PizzaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Authenticator auth = new Authenticator();
 	Statements s = new Statements();
@@ -27,7 +27,7 @@ public class AddPizzaController extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPizzaController() {
+    public PizzaController() {
         super();
     }
 
@@ -87,7 +87,14 @@ public class AddPizzaController extends HttpServlet {
 			view.forward(request, response);
 			return;
 		}
-		s.addPizza(name, Integer.parseInt(price), description);	
+		try {
+			s.addPizza(name, Integer.parseInt(price), description);
+		} catch (Exception e) {
+			request.setAttribute("error", "Could not add pizza to database, please try again.");
+			RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
+			view.forward(request, response);
+			return;
+		}	
 				
 		request.setAttribute("msg", name + " pizza was added to inventory!");
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
