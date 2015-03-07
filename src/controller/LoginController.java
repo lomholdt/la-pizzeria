@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.FlashMessage;
 import model.SessionModel;
 import model.Statements;
 import model.User;
@@ -32,6 +33,8 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
+		FlashMessage message = new FlashMessage();
+		message.setFlashMessageInUrl(request, "msgOK");
 		view.forward(request, response);
 	}
 
