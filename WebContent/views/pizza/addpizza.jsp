@@ -16,7 +16,7 @@
 		<label for="price">Description: </label>
 		<textarea name="description" class="form-control" rows="3"></textarea><br>
 		
-		<input type="submit" value="Add New Pizza" class="btn btn-default">
+		<input type="submit" value="Add New Pizza" class="btn btn-success">
 	</form>
 </div>
 </addpizza:wrap>
