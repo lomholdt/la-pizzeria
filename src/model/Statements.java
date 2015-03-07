@@ -259,7 +259,8 @@ public class Statements {
 	
 	public boolean checkEmail(String email){
 		try{
-			PreparedStatement pstmt = c.preparedStatement("SELECT email FROM user WHERE email='"+email+"'");
+			PreparedStatement pstmt = c.preparedStatement("SELECT email FROM user WHERE email=?");
+			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 			if(!rs.next()){
 				return true;
