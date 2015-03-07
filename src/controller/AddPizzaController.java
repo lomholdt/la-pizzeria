@@ -28,7 +28,6 @@ public class AddPizzaController extends HttpServlet {
      */
     public AddPizzaController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -76,21 +75,22 @@ public class AddPizzaController extends HttpServlet {
 		String price = request.getParameter("price");
 		String description = request.getParameter("description");
 		
-		
-		if(name == null || price == null || description == null){
-			if(!auth.isValidPizzaName(name) || !auth.isValidPizzaPrice(price) || !auth.isValidPizzaDescription(description)){				
-				request.setAttribute("error", "Could not create pizza!");
-				RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
-				view.forward(request, response);
-				return;
-			}
+		if(name == null || price == null || description == null){				
+			request.setAttribute("error", "Could not create pizza!");
+			RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
+			view.forward(request, response);
+			return;
 		}
-
+		else if(!auth.isValidPizzaName(name) || !auth.isValidPizzaPrice(price) || !auth.isValidPizzaDescription(description)){
+			request.setAttribute("error", "Could not create pizza, try again.");
+			RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
+			view.forward(request, response);
+			return;
+		}
 		s.addPizza(name, Integer.parseInt(price), description);	
-		
 				
-		request.setAttribute("msg", "Pizza added to inventory!");
-		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
+		request.setAttribute("msg", name + " pizza was added to inventory!");
+		RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
 		view.forward(request, response);
 //		response.sendRedirect("browse");
 	}

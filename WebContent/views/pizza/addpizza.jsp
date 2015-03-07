@@ -3,8 +3,8 @@
 
 <addpizza:wrap title="Admin - Add New Pizza">
 <h1>Add New Pizza</h1>
-<c:if test="${msg != null}"><div class="alert alert-warning"><p class="error">${error}</p></div></c:if>
-
+<c:if test="${error != null}"><div class="alert alert-warning">${error}</div></c:if>
+<c:if test="${msg != null}"><div class="alert alert-success">${msg}</div></c:if>
 <div class="form-group">
 	<form method="POST" action="addpizza">
 		<label for="text">Name: </label>

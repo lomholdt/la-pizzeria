@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `pizza` (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(100) NOT NULL,
-  `password` varchar(60) NOT NULL,
+  `password` varchar(64) NOT NULL,
   `name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
   `zipcode` int(11) NOT NULL,
@@ -74,6 +74,9 @@ CREATE TABLE IF NOT EXISTS role (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+
+INSERT INTO user(email, password, name, address, zipcode, phonenumber, active) VALUES('admin@admin.com', 'abcdEFG123#', 'John Doe', 'Høkerboderne 9', '1712', '22275898', '1');
+INSERT INTO role(email, role) VALUES('admin@admin.com', 'admin');
 
 
 /* INSERT SOME PIZZAS */
