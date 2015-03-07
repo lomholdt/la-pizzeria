@@ -35,14 +35,22 @@ public class AddPizzaController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		checkRights(request, response);
-		
+		if(!isAllowed(request)){
+			System.out.println("User is not admin!");
+			response.sendRedirect("browse"); 
+			return;
+		}
 		
 		String removeId = request.getParameter("remove");
 		if(removeId != null){
-			if(auth.isValidPizzaPrice(removeId)){
+			if(auth.isValidPizzaPrice(removeId)){	
 				System.out.println("Going to removePizza()");
 				s.removePizza(Integer.parseInt(removeId));
+				request.setAttribute("msg", "Pizza removed!");
+//				RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
+//				view.forward(request, response);
+				response.sendRedirect("browse");
+				return;
 				
 			}
 			else{
@@ -51,13 +59,18 @@ public class AddPizzaController extends HttpServlet {
 				
 			}
 		}
+		RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
+		view.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		checkRights(request, response);
+		if(!isAllowed(request)){
+			response.sendRedirect("browse"); 
+			return;
+		}
 		
 		String name = request.getParameter("name");
 		String price = request.getParameter("price");
@@ -69,28 +82,27 @@ public class AddPizzaController extends HttpServlet {
 				request.setAttribute("error", "Could not create pizza!");
 				RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
 				view.forward(request, response);
+				return;
 			}
 		}
 
 		s.addPizza(name, Integer.parseInt(price), description);	
 		
+		
+		Flash f = new Flash();
+		
+		
 		request.setAttribute("msg", "Pizza added to inventory!");
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
 		view.forward(request, response);
+//		response.sendRedirect("browse");
 	}
 	
-	private void checkRights(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		
+	private boolean isAllowed(HttpServletRequest request) throws IOException, ServletException{
 		HttpSession s = request.getSession();
 		User u = (User)s.getAttribute("user");
-		
-		if(u == null || !auth.isAdmin(u)){
-			System.out.println("User is not admin!");
-			RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
-			view.forward(request, response);
-		}else{
-			RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
-			view.forward(request, response);
-		}
+		if(u == null){ return false;
+		} else if (!auth.isAdmin(u)) return false;
+		return true;
 	}
 }
