@@ -32,6 +32,9 @@
 			</tr>
 			</c:forEach>
 		</table>
+		<tr>
+		<td align="right"><a href="#"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span> Check out</button></a></td>
+		</tr>
 	</c:when>
 	<c:otherwise>
 	<div class="alert alert-info">
