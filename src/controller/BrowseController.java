@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.DBConnect;
+import model.FlashMessage;
 import model.Pizza;
 import model.Statements;
 
@@ -34,6 +35,9 @@ public class BrowseController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			
+			new FlashMessage().setFlashMessageInUrl(request, "msg"); // Flash message hack for servlets! :) 
+			
 			int page = 1;
 			int pizzasPerPage = 10; 
 			if(request.getParameter("page") != null) page = Integer.parseInt(request.getParameter("page"));

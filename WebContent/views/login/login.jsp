@@ -5,8 +5,6 @@
 <h1>Login</h1>
 
 <c:if test="${msgOK != null}"><div class="alert alert-warning"><p class="msg">${msgOK}</p></div></c:if>
-
-<c:if test="${msg != null}"><div class="alert alert-warning"><p class="msg">${msg}</p></div></c:if>
 <c:if test="${msg != null}"><div class="alert alert-success"><p class="msg">${msg}</p></div></c:if>
 
 <div class="form-group">

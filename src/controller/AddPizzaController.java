@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Authenticator;
+import model.FlashMessage;
 import model.Statements;
 import model.User;
 
@@ -45,9 +46,8 @@ public class AddPizzaController extends HttpServlet {
 			if(auth.isValidPizzaPrice(removeId)){	
 				System.out.println("Going to removePizza()");
 				s.removePizza(Integer.parseInt(removeId));
-				request.setAttribute("msg", "Pizza removed!");
-//				RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
-//				view.forward(request, response);
+				FlashMessage flashMessage = new FlashMessage();
+				flashMessage.sendFlashMessage(request, "Pizza Removed", "msg");
 				response.sendRedirect("browse");
 				return;
 				
