@@ -35,6 +35,9 @@
 		<tr>
 		<td><a href="checkout"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Check out</button></a></td>
 		</tr>
+		<div>
+			<a href="#"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Check out</button></a>
+		</div>
 	</c:when>
 	<c:otherwise>
 	<div class="alert alert-info">
