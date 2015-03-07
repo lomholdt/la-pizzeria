@@ -31,9 +31,9 @@ public class ReceiptController extends HttpServlet {
 		String allowCheckout = request.getParameter("allowCheckout");
 		
 		
-		if(allowCheckout!= null && allowCheckout.equals("true")){
-		RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
-		view.forward(request, response);
+		if(allowCheckout != null && allowCheckout.equals("true")){
+			RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
+			view.forward(request, response);
 		}
 		else{
 			response.sendRedirect("browse");
