@@ -9,6 +9,7 @@
 		<label for="pincode">PIN code:</label>
 		<input type="text" class="form-control" id="pincode" placeholder="Enter PIN code here" name="pincode"><br>
 		<input type="hidden" name="mail" value="${param.mail}"> 
+		<input type="hidden" name="msgOK" value="Splendid! You are now registrered, please login below">
 		<input type="submit" class="btn btn-default" value="Submit">
 	</form>
 </div>
