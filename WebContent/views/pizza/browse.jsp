@@ -1,9 +1,9 @@
 <%@ taglib prefix="browse" tagdir="/WEB-INF/tags" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<browse:wrap title="La Pizzeria - Browse">
+<browse:wrap title="La Pizzeria - Pizzas">
 
-<h1>Pizza Browser</h1>
+<h1>Pizzas</h1>
 
 
 

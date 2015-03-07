@@ -1,7 +1,7 @@
 <%@ taglib prefix="addpizza" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<addpizza:wrap title="Admin - Add New Pizza">
+<addpizza:wrap title="Admin - Add new pizza">
 <h1>Add New Pizza</h1>
 <c:if test="${error != null}"><div class="alert alert-warning">${error}</div></c:if>
 <c:if test="${msg != null}"><div class="alert alert-success">${msg}</div></c:if>

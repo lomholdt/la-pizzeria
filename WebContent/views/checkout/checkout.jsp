@@ -1,8 +1,8 @@
 <%@ taglib prefix="checkout" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<checkout:wrap title="Receipt">
-<h1>Your Order</h1>
+<checkout:wrap title="La Pizzeria - Checkout">
+<h1>Your order</h1>
 
 <table class="table">
 	<tr>

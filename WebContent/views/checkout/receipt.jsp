@@ -1,8 +1,8 @@
 <%@ taglib prefix="receipt" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<receipt:wrap title="Receipt">
-<h1>Thank you for eating Pizza everyday <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h1>
+<receipt:wrap title="La Pizzeria - Receipt">
+<h1>Thank you for eating pizza everyday <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </h1>
 
 <div style="padding-top:10px">Your order:</div>
 

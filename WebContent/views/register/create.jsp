@@ -1,6 +1,6 @@
 <%@ taglib prefix="create" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<create:wrap title="La Pizzeria - Create User">
+<create:wrap title="La Pizzeria - Create user">
 <h1>Create user</h1>
 <c:if test="${msg != null}"><div class="alert alert-warning"><p class="msg">${msg}</p></div></c:if>
 <div class="form-group">
