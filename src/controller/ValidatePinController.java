@@ -46,7 +46,7 @@ public class ValidatePinController extends HttpServlet {
 		if(s.validateEmail(pincode, mail)) {
 			s.removePinFromDatabase(mail);
 			FlashMessage message = new FlashMessage();
-			message.sendFlashMessage(request, "jonas har en pik", "msgOK");
+			message.sendFlashMessage(request, "You have been validatet, please login", "msgOK");
 			response.sendRedirect("login");
 		}
 		else {
