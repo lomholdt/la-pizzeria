@@ -10,15 +10,10 @@ public class Authenticator {
 	
 	public boolean isValidUser(String email, String password, String name, String address, String zipcode, String phonenumber){
 		if(!isValidEmail(email)){return false;}
-		System.out.println("email ok");
 		if(!isValidPassword(password)){return false;}
-		System.out.println("password ok");
 		if(!isValidName(name)){return false;}
-		System.out.println("name ok");
 		if(!isValidAddress(address)){return false;}
-		System.out.println("address ok");
 		if(!isValidZipcode(zipcode)){return false;}
-		System.out.println("zipcode ok");
 		if(!isValidPhonenumber(phonenumber)){return false;}
 		
 		return true;

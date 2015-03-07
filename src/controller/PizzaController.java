@@ -36,7 +36,6 @@ public class PizzaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(!isAllowed(request)){
-			System.out.println("User is not admin!");
 			response.sendRedirect("browse"); 
 			return;
 		}
@@ -44,18 +43,11 @@ public class PizzaController extends HttpServlet {
 		String removeId = request.getParameter("remove");
 		if(removeId != null){
 			if(auth.isValidPizzaPrice(removeId)){	
-				System.out.println("Going to removePizza()");
 				s.removePizza(Integer.parseInt(removeId));
 				FlashMessage flashMessage = new FlashMessage();
 				flashMessage.sendFlashMessage(request, "Pizza Removed", "msg");
 				response.sendRedirect("browse");
-				return;
-				
-			}
-			else{
-				System.out.println("Did not authenticate removeId");
-				// LOL...
-				
+				return;	
 			}
 		}
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");

@@ -35,7 +35,6 @@ public class SendMail{
                 + "<br>Insert your pincode, <b>" + pincode + "</b>, in the following link: <a href=\"http://localhost:8080/la-pizzeria/validate?mail="+email+"\">Click here</a>", "text/html; charset=utf-8");
             
             Transport.send(message);
-            System.out.println("Done");
         } catch (MessagingException e) {
             throw new RuntimeException(e);
 	    }

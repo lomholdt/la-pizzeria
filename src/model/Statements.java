@@ -222,11 +222,9 @@ public class Statements {
 			PreparedStatement pstmt = c.preparedStatement("DELETE FROM la_pizzeria.pizza WHERE pizza.id = ?");
 			pstmt.setInt(1, removeId);
 			pstmt.executeUpdate();
-			System.out.println("PIZZA REMOVED...");
 			return true;
 			
 		} catch (Exception e) {
-			System.out.println("Could not remove pizza!!!");
 			e.printStackTrace();
 		}
 		

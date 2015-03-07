@@ -57,27 +57,23 @@ public class CreateUserController extends HttpServlet {
 					String pinCode = db.addPinToDatabase(email);
 					SendMail mail = new SendMail();
 					mail.sendPinCode(email, name, pinCode);	
-					System.out.print("User valid");
 					request.setAttribute("msg", "Please check your email to complete your registration");
 					RequestDispatcher view = request.getRequestDispatcher("views/register/validate.jsp?mail="+email);
 					view.forward(request, response);
 				}
 				else{
-					System.out.print("Connection to the database failed");
 					request.setAttribute("msg", "Connection to the database failed, please try again");
 					RequestDispatcher view = request.getRequestDispatcher("views/register/create.jsp");
 					view.forward(request, response);
 				}
 			}
 			else {
-				System.out.print("Email already exists in database");
 				request.setAttribute("msg", "Could not create user: The email is already in use");
 				RequestDispatcher view = request.getRequestDispatcher("views/register/create.jsp");
 				view.forward(request, response);
 			}
 		}
 		else{
-			System.out.print("User information not vaild");
 			request.setAttribute("msg", "Something went wrong. Are you sure you entered correct information?");
 			RequestDispatcher view = request.getRequestDispatcher("views/register/create.jsp");
 			view.forward(request, response);
