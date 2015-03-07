@@ -87,7 +87,14 @@ public class PizzaController extends HttpServlet {
 			view.forward(request, response);
 			return;
 		}
-		s.addPizza(name, Integer.parseInt(price), description);	
+		try {
+			s.addPizza(name, Integer.parseInt(price), description);
+		} catch (Exception e) {
+			request.setAttribute("error", "Could not add pizza to database, please try again.");
+			RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");
+			view.forward(request, response);
+			return;
+		}	
 				
 		request.setAttribute("msg", name + " pizza was added to inventory!");
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/addpizza.jsp");

@@ -45,7 +45,7 @@
 				<td>${pizza.description}</td>
 				<td><a href="basket?add=${pizza.id}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
 				<c:if test="${user.role ne null}">
-					<c:if test="${user.role eq 'admin'}"><td><a href="addpizza?remove=${pizza.id}">Remove</a></td></c:if>
+					<c:if test="${user.role eq 'admin'}"><td><a href="pizza?remove=${pizza.id}">Remove</a></td></c:if>
 				</c:if>
 			</tr>
 			</c:forEach>
