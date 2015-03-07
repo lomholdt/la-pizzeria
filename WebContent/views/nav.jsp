@@ -26,7 +26,7 @@
 	           	</c:otherwise>
            </c:choose>
            <c:if test="${user.role eq 'admin'}">
-	           		<li><a href="${pageContext.request.contextPath}/addpizza">Add New Pizza</a></li>
+	           		<li><a href="${pageContext.request.contextPath}/addpizza">Add New Pizza</a> ${user.role}</li>
 	       </c:if>
          </ul>
        </div><!--/.nav-collapse -->
