@@ -88,10 +88,7 @@ public class AddPizzaController extends HttpServlet {
 
 		s.addPizza(name, Integer.parseInt(price), description);	
 		
-		
-		Flash f = new Flash();
-		
-		
+				
 		request.setAttribute("msg", "Pizza added to inventory!");
 		RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
 		view.forward(request, response);
