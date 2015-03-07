@@ -9,7 +9,6 @@
 <c:if test="${msg != null}"><div class="alert alert-warning"><p class="msg">${msg}</p></div></c:if>
 <c:if test="${msgOK != null}"><div class="alert alert-success"><p class="msg">${msgOK}</p></div></c:if>
 
-
 <div class="form-group">
 	<form method="POST" action="login">
 		<label for="email">Email:</label>
