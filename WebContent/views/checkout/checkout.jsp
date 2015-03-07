@@ -35,7 +35,7 @@
 		<td>${user.zipcode}</td>
 	</tr>
 </table>
-<a href="receipt"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Confirm</button></a>
+<a href="receipt"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Confirm</button></a>
 		
 
 </checkout:wrap>
