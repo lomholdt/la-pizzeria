@@ -3,9 +3,6 @@ package model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 public class Authenticator {
 	
 	public boolean isValidUser(String email, String password, String name, String address, String zipcode, String phonenumber){
