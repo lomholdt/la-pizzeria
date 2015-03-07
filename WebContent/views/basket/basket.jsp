@@ -3,7 +3,7 @@
 
 <basket:wrap title="La Pizzeria - Basket">
 
-<h1>Pizza Basket</h1> 
+<h1>Basket</h1> 
 <p>Items in basket: <b>${basket.size}</b></p>
 <p>Total: <b>${basket.totalPrice}</b></p>
 

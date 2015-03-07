@@ -1,6 +1,6 @@
 <%@ taglib prefix="validate" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<validate:wrap title="validate">
+<validate:wrap title="La Pizzeria - Validate">
 <h1>Validate pin</h1>
 <c:if test="${msg != null}"><div class="alert alert-success"><p class="msg">${msg}</p></div></c:if>
 <c:if test="${error != null}"><div class="alert alert-danger"><p class="error">${error}</p></div></c:if>

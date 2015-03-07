@@ -13,7 +13,7 @@
        </div>
        <div id="navbar" class="collapse navbar-collapse">
          <ul class="nav navbar-nav">
-           <li><a href="${pageContext.request.contextPath}/browse">Browse Pizz</a></li>
+           <li><a href="${pageContext.request.contextPath}/browse">Pizzas</a></li>
 		       <li><a href="${pageContext.request.contextPath}/basket">Basket 
 		       <span class="badge">
 		       		<c:choose>
@@ -31,12 +31,12 @@
 		          	<li><p class="navbar-text">Logged in as <a href="#">${user.name}</a></p></li>
 	           	</c:when>
 	           	<c:otherwise>
-	           		<li><a href="${pageContext.request.contextPath}/createuser">Create User</a></li>
+	           		<li><a href="${pageContext.request.contextPath}/createuser">Create user</a></li>
 	           		<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
 	           	</c:otherwise>
            </c:choose>
            <c:if test="${user.role eq 'admin'}">
-	           		<li><a href="${pageContext.request.contextPath}/addpizza">Add New Pizza</a></li>
+	           		<li><a href="${pageContext.request.contextPath}/addpizza">Add new pizza</a></li>
 	       </c:if>
          </ul>
        </div><!--/.nav-collapse -->

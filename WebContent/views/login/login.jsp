@@ -1,7 +1,7 @@
 <%@ taglib prefix="login" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<login:wrap title="Login">
+<login:wrap title="La Pizzeria - Login">
 <h1>Login</h1>
 
 <c:if test="${msgOK != null}"><div class="alert alert-warning"><p class="msg">${msgOK}</p></div></c:if>
