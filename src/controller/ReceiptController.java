@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Basket;
 import model.FlashMessage;
 
 /**
@@ -30,11 +31,11 @@ public class ReceiptController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String allowCheckout = (String) request.getSession().getAttribute("allowCheckout");
-		FlashMessage msg = new FlashMessage();
-		msg.setFlashMessageInUrl(request, "allowCheckout"); 
+		new FlashMessage().getFlashMessage(request, "allowCheckout"); 
 		if(allowCheckout!= null && allowCheckout.equals("true")){
-		RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
-		view.forward(request, response);
+			request.getSession().removeAttribute("basket");
+			RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
+			view.forward(request, response);
 		}
 		else{
 			response.sendRedirect("browse");
