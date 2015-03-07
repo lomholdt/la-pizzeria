@@ -33,7 +33,7 @@
 			</c:forEach>
 		</table>
 		<tr>
-		<td><a href="#"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Check out</button></a></td>
+		<td><a href="checkout"><button type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Check out</button></a></td>
 		</tr>
 	</c:when>
 	<c:otherwise>

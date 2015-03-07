@@ -77,6 +77,14 @@
     <url-pattern>/basket</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ReceiptController</servlet-name>
+    <servlet-class>controller.ReceiptController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReceiptController</servlet-name>
+    <url-pattern>/receipt</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>AddPizzaController</servlet-name>
     <servlet-class>controller.AddPizzaController</servlet-class>
   </servlet>
@@ -84,13 +92,13 @@
     <servlet-name>AddPizzaController</servlet-name>
     <url-pattern>/addpizza</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>CheckoutController</servlet-name>
     <servlet-class>controller.CheckoutController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CheckoutController</servlet-name>
-    <url-pattern>receipt</url-pattern>
+    <url-pattern>/checkout</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>default</servlet-name>

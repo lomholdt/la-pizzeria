@@ -8,39 +8,35 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import model.Basket;
 
 /**
- * Servlet implementation class CheckoutController
+ * Servlet implementation class ReceiptController
  */
-@WebServlet("/CheckoutController")
-public class CheckoutController extends HttpServlet {
+@WebServlet("/ReceiptController")
+public class ReceiptController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckoutController() {
+    public ReceiptController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String allowCheckout = request.getParameter("allowCheckout");
 		
-		HttpSession session = request.getSession();
-		if (session.getAttribute("user") != null){
-			request.setAttribute("allowCheckout", "true");
-			RequestDispatcher view = request.getRequestDispatcher("views/checkout/checkout.jsp");
-			view.forward(request, response);
+		
+		if(allowCheckout!= null && allowCheckout.equals("true")){
+		RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
+		view.forward(request, response);
 		}
 		else{
-			request.setAttribute("msgOK", "please log in to checkout");
-			RequestDispatcher view = request.getRequestDispatcher("views/login/login.jsp");
-			view.forward(request, response);
+			response.sendRedirect("browse");
 		}
 	}
 
