@@ -51,7 +51,6 @@ public class Statements {
 	public boolean addUserToDatabase(String e, String p, String n, String a, String z, String ph){
 		try {
 			p = hash256(p);
-			System.out.println(p);
 		} catch (NoSuchAlgorithmException e2) {
 			e2.printStackTrace();
 		}

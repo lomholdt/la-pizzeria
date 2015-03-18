@@ -1,12 +1,18 @@
 <%@ taglib prefix="create" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <create:wrap title="La Pizzeria - Create user">
+<script src="${pageContext.request.contextPath}/js/user-validation.js"></script>
 <h1>Create user</h1>
 <c:if test="${msg != null}"><div class="alert alert-warning"><p class="msg">${msg}</p></div></c:if>
 <div class="form-group">
 	<form method="POST" action="createuser">
+		
+		<div class="form-group" id ="email-group">
 		<label for="email">Email:</label>
-		<input type="email" id="email" class="form-control" placeholder="Enter email" name="email"><br>
+		<input type="email" id="email" class="form-control" placeholder="Enter email" name="email" onkeyup="checkTheEmail()">
+		<span id="email-glyph"></span>
+		</div>
+
 		<label for="password">Password:</label>
 		<input type="password" id="password" class="form-control" placeholder="Enter password" name="password"><br>
 		<label for="name">Name:</label>

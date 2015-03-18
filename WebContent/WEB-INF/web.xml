@@ -37,6 +37,14 @@
     <url-pattern>/validate</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>ValidateEmailController</servlet-name>
+    <servlet-class>controller.ValidateEmailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateEmailController</servlet-name>
+    <url-pattern>/email-is-available</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>LoginController</servlet-name>
     <servlet-class>controller.LoginController</servlet-class>
   </servlet>
