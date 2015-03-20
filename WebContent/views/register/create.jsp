@@ -9,12 +9,16 @@
 		
 		<div class="form-group" id ="email-group">
 		<label for="email">Email:</label>
-		<input type="email" id="email" class="form-control" placeholder="Enter email" name="email" onkeyup="checkTheEmail()">
+		<input type="email" id="email" class="form-control" placeholder="Enter email" name="email" onkeyup="checkValidEmail()">
 		<span id="email-glyph"></span>
 		</div>
 
+		<div class="form-group" id="password-group">
 		<label for="password">Password:</label>
-		<input type="password" id="password" class="form-control" placeholder="Enter password" name="password"><br>
+		<input type="password" id="password" class="form-control" placeholder="Enter password" name="password" onkeyup="checkValidPassword()">
+		<span id="password-glyph"></span>
+		</div>
+		
 		<label for="name">Name:</label>
 		<input type="text" id="name" class="form-control" placeholder="Enter name" name="name"><br>
 		<label for="address">Address:</label>

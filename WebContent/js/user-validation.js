@@ -12,7 +12,7 @@ function sendRequest(action, responseHandler){
 	http.send(null);
 }
 
-function checkTheEmail(){
+function checkValidEmail(){
 	if (http.readyState == 0 || http.readyState == 4){
 		// ready to rock'n'roll!
 		var email = document.getElementById("email").value;
@@ -47,6 +47,27 @@ function responseReceived(){
 
 function isValidEmail(email){
 	var pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-	if (pattern.test(email)) return true;
+	if (pattern.test(email) && email.length != 0) return true;
 	return false;
+}
+
+function isValidPassword(password){
+	var pattern = /^(?=.*[0-9])(?=.*[A-z])(?=.*[*'^¨~|;,.><!#¤%&()=?@£$€])(?=\S+$).{6,}$/;
+	if(pattern.test(password)) return true;
+	return false;
+}
+
+function checkValidPassword(){
+	var passwordField = document.getElementById("password-group");
+	var spanTag = document.getElementById("password-glyph");
+	var password = document.getElementById("password").value;
+	if(isValidPassword(password)){
+		passwordField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+	}
+	else{
+		passwordField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+	}
+	
 }
