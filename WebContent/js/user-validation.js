@@ -57,6 +57,19 @@ function isValidPassword(password){
 	return false;
 }
 
+function isValidName(name){
+	var pattern = /^[A-z\\s]+$/;
+	if(pattern.test(name)) return true;
+	return false;
+}
+
+
+function isValidAddress(address){
+	var pattern = /(\w|\ø|\s)/;
+	if(pattern.test(address)) return true;
+	return false;
+}
+
 function checkValidPassword(){
 	var passwordField = document.getElementById("password-group");
 	var spanTag = document.getElementById("password-glyph");
@@ -69,5 +82,43 @@ function checkValidPassword(){
 		passwordField.className = "form-group has-error has-feedback";
 		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
 	}
-	
 }
+
+
+function checkValidName(){
+	var nameField = document.getElementById("name-group");
+	var spanTag = document.getElementById("name-glyph");
+	var spanMsg = document.getElementById("nameError");
+	var name = document.getElementById("name").value;
+	if(isValidName(name)){
+		nameField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else{
+		nameField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+addressError
+
+function checkValidAddress(){
+	var addressField = document.getElementById("address-group");
+	var spanTag = document.getElementById("address-glyph");
+	var spanMsg = document.getElementById("addressError");
+	var address = document.getElementById("address").value;
+	if(isValidAddress(address)){
+		addressField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else{
+		addressField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+

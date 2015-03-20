@@ -19,10 +19,20 @@
 		<span id="password-glyph"></span>
 		</div>
 		
+		<div class="form-group" id="name-group">
 		<label for="name">Name:</label>
-		<input type="text" id="name" class="form-control" placeholder="Enter name" name="name"><br>
+		<input type="text" id="name" class="form-control" placeholder="Enter name" name="name" onkeyup="checkValidName()">
+		<span id="name-glyph"></span>
+		<span style="display: none;" id="nameError" class="label label-warning">Not a valid name</span>
+		</div>
+		
+		<div class="form-group" id="address-group">
 		<label for="address">Address:</label>
-		<input type="text" id="address" class="form-control" placeholder="Enter address" name="address"><br>
+		<input type="text" id="address" class="form-control" placeholder="Enter address" name="address" onkeyup="checkValidAddress()">
+		<span id="address-glyph"></span>
+		<span style="display: none;" id="addressError" class="label label-warning">Not a valid address</span>
+		</div>
+		
 		<label for="zipcode">Zipcode:</label>
 		<input type="text" id="zipcode" class="form-control" placeholder="Enter zipcode" name="zipcode"><br>
 		<label for="phonenumber">Phonenumber:</label>
