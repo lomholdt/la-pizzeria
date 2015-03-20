@@ -83,7 +83,7 @@ public class BasketController extends HttpServlet {
 		if(m.matches()){
 			int id = Integer.parseInt(removeId);
 			try {
-				if(id < basket.getSize()) basket.remove(id); return true;
+				if(id < basket.getSize()) System.out.println("Item " + id + " Removed");basket.remove(id); return true;
 			} catch (Exception e) {
 				e.getStackTrace();
 			}

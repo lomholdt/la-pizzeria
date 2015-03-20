@@ -6,6 +6,7 @@ public class Pizza implements Item {
 	private String name;
 	private int price;
 	private String description;
+	private int quantity = 1;
 
 	public String getName() {
 		return name;
@@ -37,6 +38,14 @@ public class Pizza implements Item {
 
 	public int getId() {
 		return id;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }
