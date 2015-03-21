@@ -81,6 +81,12 @@ function isValidPhonenumber(phonenumber){
 	return false;
 }
 
+function isValidPincode(pincode){
+	var pattern = /^\d{4}$/;
+	if(pattern.test(pincode)) return true;
+	return false;
+}
+
 function checkValidPassword(){
 	var passwordField = document.getElementById("password-group");
 	var spanTag = document.getElementById("password-glyph");
@@ -160,6 +166,23 @@ function checkValidPhonenumber(){
 	}
 	else {
 		phonenumberField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+function checkValidPincode(){
+	var pincodeField = document.getElementById("pincode-group");
+	var spanTag = document.getElementById("pincode-glyph");
+	var spanMsg = document.getElementById("pincodeError");
+	var pincode = document.getElementById("pincode").value;
+	if(isValidPincode(pincode)){
+		pincodeField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else {
+		pincodeField.className = "form-group has-error has-feedback";
 		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
 		spanMsg.style.display = "inline";
 	}
