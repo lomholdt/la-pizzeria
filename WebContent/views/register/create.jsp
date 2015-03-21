@@ -33,10 +33,20 @@
 		<span style="display: none;" id="addressError" class="label label-warning">Not a valid address</span>
 		</div>
 		
+		<div class="form-group" id="zipcode-group">
 		<label for="zipcode">Zipcode:</label>
-		<input type="text" id="zipcode" class="form-control" placeholder="Enter zipcode" name="zipcode"><br>
+		<input type="text" id="zipcode" class="form-control" placeholder="Enter zipcode" name="zipcode" onkeyup="checkValidZipcode()">
+		<span id="zipcode-glyph"></span>
+		<span style="display: none;" id="zipcodeError" class="label label-warning">Not a valid zipcode</span>
+		</div>
+		
+		<div class="form-group" id="phonenumber-group">
 		<label for="phonenumber">Phonenumber:</label>
-		<input type="text" id="phonenumber" class="form-control" placeholder="Enter phonenumber" name="phonenumber"><br>
+		<input type="text" id="phonenumber" class="form-control" placeholder="Enter phonenumber" name="phonenumber" onkeyup="checkValidPhonenumber()">
+		<span style="display: none;" id="phonenumberError" class="label label-warning">Not a valid phonenumber</span>
+		<span id="phonenumber-glyph"></span>
+		</div>
+		
 		<input type="submit" class="btn btn-default" value="Submit">
 	</form>
 </div>

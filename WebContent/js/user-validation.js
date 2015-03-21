@@ -63,10 +63,27 @@ function isValidName(name){
 	return false;
 }
 
-
 function isValidAddress(address){
-	var pattern = /(\w|\ø|\s)/;
+	var pattern = /^(?=.*\s)(?=.*\d).*/;
 	if(pattern.test(address)) return true;
+	return false;
+}
+
+function isValidZipcode(zipcode){
+	var pattern = /^\d{4}$/;
+	if(pattern.test(zipcode)) return true;
+	return false;
+}
+
+function isValidPhonenumber(phonenumber){
+	var pattern = /^\d{8}$/;
+	if(pattern.test(phonenumber)) return true;
+	return false;
+}
+
+function isValidPincode(pincode){
+	var pattern = /^\d{4}$/;
+	if(pattern.test(pincode)) return true;
 	return false;
 }
 
@@ -102,7 +119,6 @@ function checkValidName(){
 	}
 }
 
-addressError
 
 function checkValidAddress(){
 	var addressField = document.getElementById("address-group");
@@ -116,6 +132,57 @@ function checkValidAddress(){
 	}
 	else{
 		addressField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+function checkValidZipcode(){
+	var zipcodeField = document.getElementById("zipcode-group");
+	var spanTag = document.getElementById("zipcode-glyph");
+	var spanMsg = document.getElementById("zipcodeError");
+	var zipcode = document.getElementById("zipcode").value;
+	if(isValidZipcode(zipcode)){
+		zipcodeField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else {
+		zipcodeField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+function checkValidPhonenumber(){
+	var phonenumberField = document.getElementById("phonenumber-group");
+	var spanTag = document.getElementById("phonenumber-glyph");
+	var spanMsg = document.getElementById("phonenumberError");
+	var phonenumber = document.getElementById("phonenumber").value;
+	if(isValidPhonenumber(phonenumber)){
+		phonenumberField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else {
+		phonenumberField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+function checkValidPincode(){
+	var pincodeField = document.getElementById("pincode-group");
+	var spanTag = document.getElementById("pincode-glyph");
+	var spanMsg = document.getElementById("pincodeError");
+	var pincode = document.getElementById("pincode").value;
+	if(isValidPincode(pincode)){
+		pincodeField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else {
+		pincodeField.className = "form-group has-error has-feedback";
 		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
 		spanMsg.style.display = "inline";
 	}
