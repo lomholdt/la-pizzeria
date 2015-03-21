@@ -70,6 +70,12 @@ function isValidAddress(address){
 	return false;
 }
 
+function isValidPhonenumber(phonenumber){
+	var pattern = /^\d{8}$/;
+	if(pattern.test(phonenumber)) return true;
+	return false;
+}
+
 function checkValidPassword(){
 	var passwordField = document.getElementById("password-group");
 	var spanTag = document.getElementById("password-glyph");
@@ -116,6 +122,23 @@ function checkValidAddress(){
 	}
 	else{
 		addressField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+function checkValidPhonenumber(){
+	var phonenumberField = document.getElementById("phonenumber-group");
+	var spanTag = document.getElementById("phonenumber-glyph");
+	var spanMsg = document.getElementById("phonenumberError");
+	var phonenumber = document.getElementById("phonenumber").value;
+	if(isValidPhonenumber(phonenumber)){
+		phonenumberField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else {
+		phonenumberField.className = "form-group has-error has-feedback";
 		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
 		spanMsg.style.display = "inline";
 	}
