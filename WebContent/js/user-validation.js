@@ -63,9 +63,8 @@ function isValidName(name){
 	return false;
 }
 
-
 function isValidAddress(address){
-	var pattern = /(\w|\ø|\s)/;
+	var pattern = /^(?=.*\s)(?=.*\d).*/;
 	if(pattern.test(address)) return true;
 	return false;
 }
@@ -114,7 +113,6 @@ function checkValidName(){
 	}
 }
 
-addressError
 
 function checkValidAddress(){
 	var addressField = document.getElementById("address-group");
