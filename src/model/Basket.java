@@ -40,4 +40,26 @@ public class Basket {
 	public int getTotalPrice() {
 		return totalPrice;
 	}
+	
+	public boolean contains(int id){
+		return basket.containsKey(id);
+	}
+	
+	public void addOne(int id){
+		Item i = basket.get(id);
+		if(i.getQuantity() > 0){
+			i.setQuantity(i.getQuantity() + 1);
+			quantity++;
+			totalPrice += i.getPrice();
+		}
+	}
+	
+	public void removeOne(int id){
+		Item i = basket.get(id);
+		if(i.getQuantity() > 1){
+			i.setQuantity(i.getQuantity() - 1);
+			quantity--;		
+			totalPrice -= i.getPrice();
+		}
+	}
 }

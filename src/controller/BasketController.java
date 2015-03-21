@@ -57,8 +57,25 @@ public class BasketController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		getBasket(request);
+		String modPlusId = request.getParameter("mod-plus");
+		String modMinusId = request.getParameter("mod-minus");
+		
+		if (modPlusId != null && !modPlusId.isEmpty()){
+			// add one pizz
+			if(basket.contains(Integer.parseInt(modPlusId))) basket.addOne(Integer.parseInt(modPlusId));
+		}
+		else if (modMinusId != null && !modMinusId.isEmpty()){
+			// remove one pizz
+			if(basket.contains(Integer.parseInt(modMinusId))) basket.removeOne(Integer.parseInt(modMinusId));
+		}
+		
+		RequestDispatcher view = request.getRequestDispatcher("views/basket/basket.jsp");
+		view.forward(request, response);
 	}
+	
+	
+	
 	
 	protected boolean addToBasket(String itemId){
 		Pattern p = Pattern.compile("\\d+");

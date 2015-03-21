@@ -29,7 +29,19 @@
 				<td>${item.value.name}</td>
 				<td>${item.value.price}</td>
 				<td>${item.value.description}</td>
-				<td>${item.value.quantity}</td>
+				
+				<td>
+					<form method="POST" action="basket">
+						<div class="btn-group btn-group-sm" role="group" aria-label="...">
+							<c:if test="${item.value.quantity gt 1}">
+							<button type="submit" class="btn btn-default" name="mod-minus" value="${item.value.id}">-</button>
+							</c:if>
+							<button type="button" class="btn btn-default">${item.value.quantity}</button>
+							<button type="submit" class="btn btn-default" name="mod-plus" value="${item.value.id}">+</button>
+						</div>
+					</form>
+				</td>
+				
 				<td><a href="basket?remove=${item.value.id}"><span class="glyphicon glyphicon-remove-circle"></span></a></td>
 			</tr>
 			</c:forEach>
