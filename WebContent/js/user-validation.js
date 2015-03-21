@@ -70,6 +70,12 @@ function isValidAddress(address){
 	return false;
 }
 
+function isValidZipcode(zipcode){
+	var pattern = /^\d{4}$/;
+	if(pattern.test(zipcode)) return true;
+	return false;
+}
+
 function isValidPhonenumber(phonenumber){
 	var pattern = /^\d{8}$/;
 	if(pattern.test(phonenumber)) return true;
@@ -122,6 +128,23 @@ function checkValidAddress(){
 	}
 	else{
 		addressField.className = "form-group has-error has-feedback";
+		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
+		spanMsg.style.display = "inline";
+	}
+}
+
+function checkValidZipcode(){
+	var zipcodeField = document.getElementById("zipcode-group");
+	var spanTag = document.getElementById("zipcode-glyph");
+	var spanMsg = document.getElementById("zipcodeError");
+	var zipcode = document.getElementById("zipcode").value;
+	if(isValidZipcode(zipcode)){
+		zipcodeField.className = "form-group has-success has-feedback";
+		spanTag.className = "glyphicon glyphicon-ok form-control-feedback";
+		spanMsg.style.display = "none";
+	}
+	else {
+		zipcodeField.className = "form-group has-error has-feedback";
 		spanTag.className = "glyphicon glyphicon-remove form-control-feedback";
 		spanMsg.style.display = "inline";
 	}
