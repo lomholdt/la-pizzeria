@@ -12,4 +12,11 @@ body {
 
 .logo{
 	width: 75%;
+}         
+.pizTooltip{
+	max-width: 250px;
+}
+
+.ui-tooltip-content{
+	padding-left:30px;
 }

@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <browse:wrap title="La Pizzeria - Pizzas">
+<script src="${pageContext.request.contextPath}/js/flickr-images.js"></script>
 
 <h1>Pizzas</h1>
 <p>Choose one of our tasty pizzas, our <a href="custompizza">create your own</a></p>
@@ -39,9 +40,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="pizza" items="${pizzas}">
+			<c:forEach var="pizza" items="${pizzas}" varStatus="pizzaLoop">
 			<tr>
-				<td>${pizza.name}</td>
+				<td><a id="pizzaImg${pizzaLoop.index}" href="" title="" style="text-decoration:none; color:black">${pizza.name}</a></td>
 				<td>${pizza.price}</td>
 				<td>${pizza.description}</td>
 				<td><a href="basket?add=${pizza.id}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
