@@ -9,12 +9,14 @@
 		<th>Name</th>
 		<th>Price</th>
 		<th>Description</th>
+		<th>Quantity</th>
 	</tr>
 	<c:forEach var="item" items="${basket.list}" varStatus="i">
 	<tr>
-		<td>${item.name}</td>
-		<td>${item.price}</td>
-		<td>${item.description}</td>
+		<td>${item.value.name}</td>
+		<td>${item.value.price}</td>
+		<td>${item.value.description}</td>
+		<td>${item.value.quantity}</td>
 	</tr>
 	</c:forEach>
 </table>

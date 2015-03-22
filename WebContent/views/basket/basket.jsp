@@ -13,6 +13,10 @@
 		${error}
 	</div>
 </c:if>
+<c:if test="${msg != null}">
+	<div class="alert alert-success"><p class="msg">${msg}</p>
+	</div>
+</c:if>
 <c:choose>
 
 	<c:when test="${basket.size gt 0}">
@@ -36,7 +40,7 @@
 							<c:if test="${item.value.quantity gt 1}">
 							<button type="submit" class="btn btn-default" name="mod-minus" value="${item.value.id}">-</button>
 							</c:if>
-							<button type="button" class="btn btn-default">${item.value.quantity}</button>
+							<button type="button" class="btn btn-default disabled">${item.value.quantity}</button>
 							<button type="submit" class="btn btn-default" name="mod-plus" value="${item.value.id}">+</button>
 						</div>
 					</form>

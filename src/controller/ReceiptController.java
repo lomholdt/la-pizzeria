@@ -31,9 +31,9 @@ public class ReceiptController extends HttpServlet {
 		String allowCheckout = (String) request.getSession().getAttribute("allowCheckout");
 		new FlashMessage().getFlashMessage(request, "allowCheckout"); 
 		if(allowCheckout!= null && allowCheckout.equals("true")){
-			request.getSession().removeAttribute("basket");
 			RequestDispatcher view = request.getRequestDispatcher("views/checkout/receipt.jsp");
 			view.forward(request, response);
+			request.getSession().removeAttribute("basket");
 		}
 		else{
 			response.sendRedirect("browse");

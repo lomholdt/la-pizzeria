@@ -4,6 +4,7 @@
 <browse:wrap title="La Pizzeria - Pizzas">
 
 <h1>Pizzas</h1>
+<p>Choose one of our tasty pizzas, our <a href="custompizza">create your own</a></p>
 
 
 

@@ -28,6 +28,14 @@
     <servlet-name>CreateUserController</servlet-name>
     <url-pattern>/createuser</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <servlet-name>CreateCustomPizza</servlet-name>
+    <servlet-class>controller.CreateCustomPizza</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCustomPizza</servlet-name>
+    <url-pattern>/custompizza</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>ValidatePinController</servlet-name>
     <servlet-class>controller.ValidatePinController</servlet-class>

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Basket;
+import model.FlashMessage;
 import model.Item;
 import model.Statements;
 
@@ -48,7 +49,7 @@ public class BasketController extends HttpServlet {
 		}
 		
 		
-		
+		new FlashMessage().getFlashMessage(request, "msg");
 		RequestDispatcher view = request.getRequestDispatcher("views/basket/basket.jsp");
 		view.forward(request, response);
 	}
@@ -70,12 +71,10 @@ public class BasketController extends HttpServlet {
 			if(basket.contains(Integer.parseInt(modMinusId))) basket.removeOne(Integer.parseInt(modMinusId));
 		}
 		
+		
 		RequestDispatcher view = request.getRequestDispatcher("views/basket/basket.jsp");
 		view.forward(request, response);
 	}
-	
-	
-	
 	
 	protected boolean addToBasket(String itemId){
 		Pattern p = Pattern.compile("\\d+");

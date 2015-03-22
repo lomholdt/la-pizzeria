@@ -1,12 +1,12 @@
 package model;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class Basket {
 	
-	public Map<Integer, Item> basket = new HashMap<Integer, Item>();
+	public Map<Integer, Item> basket = new TreeMap<Integer, Item>();
 	private int totalPrice;
 	private int quantity;
 	

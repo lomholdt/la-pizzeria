@@ -58,7 +58,7 @@ function isValidPassword(password){
 }
 
 function isValidName(name){
-	var pattern = /^[A-z\\s]+$/;
+	var pattern = /^[A-z\\s]+$/i;
 	if(pattern.test(name)) return true;
 	return false;
 }
