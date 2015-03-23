@@ -1,14 +1,15 @@
 function addMoreTopping(){
 	var newDivTag = document.createElement("div");
-	var newInputItem = document.createElement("input");
+	var newSelectTag = document.createElement("select");
+	fillOptions(newSelectTag); // fill the select tag with nice topping options
 	var newPTag = document.createElement("p");
 	
 	newDivTag.className = "form-group";
 	
-	newInputItem.type = "text";
-	newInputItem.className = "form-control";
-	newInputItem.placeholder = "Add topping";
-	newInputItem.name = "topping";
+	newSelectTag.type = "text";
+	newSelectTag.className = "form-control";
+	newSelectTag.placeholder = "Add topping";
+	newSelectTag.name = "topping";
 
 	newPTag.innerHTML = "Remove";
 	newPTag.cursor = "pointer";
@@ -16,10 +17,20 @@ function addMoreTopping(){
 	// add a new toppings line
 	var toppings = document.getElementById("toppings");
 	toppings.appendChild(newDivTag);
-	newDivTag.appendChild(newInputItem);
+	newDivTag.appendChild(newSelectTag);
 	newDivTag.appendChild(newPTag);
 	
 	cleanToppings();
+}
+
+function fillOptions(selectTag){
+	var toppings = ["Tomato", "Onions", "Pineapple", "Salad", "Mozzerella", "Jalape&#241;o", "Pepperoni", "Artichoke", "Potato", "Pesto", "Creme Fraiche"]; // Could be pulled automatically from DB
+	toppings.sort();
+	for (var i = 0; i < toppings.length; i++){
+		var newOption = document.createElement("option")
+		newOption.innerHTML = toppings[i];
+		selectTag.appendChild(newOption);
+	}	
 }
 
 function cleanToppings(){
@@ -28,7 +39,6 @@ function cleanToppings(){
 	var ps = toppings.getElementsByTagName("p");
 	
 	for(var i = 0; i < divs.length; i++){
-		console.log(i);
 		divs[i].id = i;
 		ps[i].onclick = function(){removeTopping(this.parentNode.id);}
 	}
@@ -37,7 +47,6 @@ function cleanToppings(){
 
 function removeTopping(id){
 	var node = document.getElementById(id);
-	console.log("Got ID: " + node.id);
 	if(node.parentNode){
 		node.parentNode.removeChild(node);
 	}
