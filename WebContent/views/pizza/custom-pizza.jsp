@@ -8,7 +8,7 @@
 <c:if test="${error != null}"><div class="alert alert-warning">${error}</div></c:if>
 <c:if test="${msg != null}"><div class="alert alert-success">${msg}</div></c:if>
 <h4>Here at La Pizzeria we are super flexible, if you don't like the pizzas you see, you can make your own custom one.
-Infact, we are soo good, that you can choose any toppings you like! We will get it for you.</h4>
+Pick a topping, and add as many as you like!</h4>
 <p>We charge 50 for the pizza bottom, and 15 for each topping!</p>
 
 
@@ -26,8 +26,12 @@ Infact, we are soo good, that you can choose any toppings you like! We will get 
 		
 	</div>
 </div>
+<div class="form-group">
 	<input type="button" class="btn btn-default" value="Add Topping" onclick="addMoreTopping()"><br>
+</div>
+<div class="form-group">
 	<input type="submit" class="btn btn-success" value="Add Custom Pizza to Basket">
+</div>
 </form>
 
 </custom-pizza:wrap>

@@ -1,7 +1,7 @@
 function addMoreTopping(){
 	var newDivTag = document.createElement("div");
 	var newSelectTag = document.createElement("select");
-	fillOptions(newSelectTag);
+	fillOptions(newSelectTag); // fill the select tag with nice topping options
 	var newPTag = document.createElement("p");
 	
 	newDivTag.className = "form-group";
@@ -39,7 +39,6 @@ function cleanToppings(){
 	var ps = toppings.getElementsByTagName("p");
 	
 	for(var i = 0; i < divs.length; i++){
-		console.log(i);
 		divs[i].id = i;
 		ps[i].onclick = function(){removeTopping(this.parentNode.id);}
 	}
@@ -48,7 +47,6 @@ function cleanToppings(){
 
 function removeTopping(id){
 	var node = document.getElementById(id);
-	console.log("Got ID: " + node.id);
 	if(node.parentNode){
 		node.parentNode.removeChild(node);
 	}
