@@ -37,7 +37,7 @@ public class BasketController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getBasket(request);
+		basket = getBasket(request);
 		String addId = request.getParameter("add");
 		String removeId = request.getParameter("remove");
 		
@@ -58,7 +58,7 @@ public class BasketController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getBasket(request);
+		basket = getBasket(request);
 		String modPlusId = request.getParameter("mod-plus");
 		String modMinusId = request.getParameter("mod-minus");
 		
