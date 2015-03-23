@@ -42,7 +42,7 @@
 		<tbody>
 			<c:forEach var="pizza" items="${pizzas}" varStatus="pizzaLoop">
 			<tr>
-				<td><a id="pizzaImg${pizzaLoop.index}" href="" title="" style="text-decoration:none; color:black">${pizza.name}</a></td>
+				<td><a id="pizzaImg${pizzaLoop.index}" href="" title="" style="text-decoration:none; color:black; cursor:default">${pizza.name}</a></td>
 				<td>${pizza.price}</td>
 				<td>${pizza.description}</td>
 				<td><a href="basket?add=${pizza.id}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
