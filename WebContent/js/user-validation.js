@@ -131,7 +131,6 @@ function checkValidName(){
 	}
 }
 
-
 function checkValidAddress(){
 	var addressField = document.getElementById("address-group");
 	var spanTag = document.getElementById("address-glyph");
@@ -184,4 +183,14 @@ function checkValidPincode(){
 	}
 }
 
-
+function checkLoginCredentials(){
+	var email = document.getElementById("email").value;
+	var password = document.getElementById("password").value;
+	var input = document.getElementById("submit");
+	if(isValidEmail(email) && isValidPassword(password)){
+		input.removeAttribute("disabled");
+	}
+	else{
+		input.setAttribute("disabled", "disabled");
+	}
+}
