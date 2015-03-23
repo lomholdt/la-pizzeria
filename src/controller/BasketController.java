@@ -48,7 +48,6 @@ public class BasketController extends HttpServlet {
 			if(!removeFromBasket(removeId)) request.setAttribute("error", "Could not remove item " + removeId + " from basket.");
 		}
 		
-		
 		new FlashMessage().getFlashMessage(request, "msg");
 		RequestDispatcher view = request.getRequestDispatcher("views/basket/basket.jsp");
 		view.forward(request, response);
