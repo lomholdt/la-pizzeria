@@ -47,7 +47,7 @@
 		<span id="phonenumber-glyph"></span>
 		</div>
 		
-		<input type="submit" class="btn btn-default" value="Submit">
+		<input type="submit" class="btn btn-success" value="Create New User">
 	</form>
 </div>
 </create:wrap>
