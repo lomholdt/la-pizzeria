@@ -162,9 +162,42 @@ public class Statements {
 		}	
 	}
 	
+	public List<Pizza> getPizzas(int offset, int pizzasPerPage, String sortBy, int minPrice, int maxPrice) throws Exception{
+		try {
+			List<Pizza> pizzas = new ArrayList<Pizza>();
+			rs = c.getData("SELECT id, name, price, description FROM pizza WHERE price >= " + minPrice + " AND " + "price <=" + maxPrice + " ORDER BY " + sortBy + " LIMIT " + offset + ", " + pizzasPerPage);
+			
+			while(rs.next()){
+				Pizza p = new Pizza();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getInt("price"));
+				p.setDescription(rs.getString("description"));
+				pizzas.add(p);
+			}
+			
+			return pizzas;
+		} catch (Exception e) {
+			throw e;
+		}	
+	}
+	
 	public int getNumPizzas(){
 		try {
 			PreparedStatement pinstmt = c.preparedStatement("SELECT COUNT(*) AS numpizz FROM pizza");
+			rs = pinstmt.executeQuery();
+			if(rs.next()) return (rs.getInt("numpizz"));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return 0;
+	}
+	
+	public int getNumPizzas(int minPrice, int maxPrice){
+		try {
+			PreparedStatement pinstmt = c.preparedStatement("SELECT COUNT(*) AS numpizz FROM pizza WHERE price >= ? AND price <= ?");
+			pinstmt.setInt(1, minPrice);
+			pinstmt.setInt(2, maxPrice);
 			rs = pinstmt.executeQuery();
 			if(rs.next()) return (rs.getInt("numpizz"));
 		} catch (Exception e) {
@@ -191,6 +224,8 @@ public class Statements {
 		}
 		return null;
 	}
+	
+
 	
 	public boolean addPizza(String name, int price, String description) throws Exception{
 		try{

@@ -23,12 +23,21 @@
 	</div>
 </c:if>
 <c:if test="${totalPages gt 0}">
-	<form method="GET" action="">
-		<select name="sortBy" onchange="this.form.submit()">
+	<form class="form-inline" method="GET" action="browse">
+		<select class="form-control" name="sortBy" onchange="this.form.submit()">
 			<option selected="selected" disabled="disabled">Sort By</option>
 			<option value="name">Name</option>
 			<option value="price">Price</option>
 		</select>
+		<div class="form-group">
+			<input class="form-control" placeholder="Min price" value="${param.minPrice}" name="minPrice">
+		</div>
+		<div class="form-group">
+			<input class="form-control" placeholder="Max price" value="${param.maxPrice}" name="maxPrice">
+		</div>
+
+		<input class="btn btn-default" type="submit" value="Submit">
+		
 	</form>
 	<table class="table table-hover">
 		<thead>
@@ -57,7 +66,7 @@
 	<!-- PAGINATION BEGIN -->
 	<ul class="pagination">
 	<c:if test="${page gt 1}">
-		<li><a href="browse?page=${page - 1}&sortBy=${sortBy}"><span class="glyphicon glyphicon-menu-left"></span> Previous</a></li>
+		<li><a href="browse?page=${page - 1}&sortBy=${sortBy}&minPrice=${param.minPrice}&maxPrice=${param.maxPrice}"><span class="glyphicon glyphicon-menu-left"></span> Previous</a></li>
 	</c:if>
 	
 	<c:forEach begin="1" end="${totalPages}" var="i">
@@ -66,13 +75,13 @@
 				<li class="active"><a>${i}</a></li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="browse?page=${i}">${i}</a></li>
+				<li><a href="browse?page=${i}&sortBy=${sortBy}&minPrice=${param.minPrice}&maxPrice=${param.maxPrice}">${i}</a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	
 	<c:if test="${page lt totalPages}">
-		<li><a href="browse?page=${page + 1}&sortBy=${sortBy}">Next <span class="glyphicon glyphicon-menu-right"></span></a></li>
+		<li><a href="browse?page=${page + 1}&sortBy=${sortBy}&minPrice=${param.minPrice}&maxPrice=${param.maxPrice}">Next <span class="glyphicon glyphicon-menu-right"></span></a></li>
 	</c:if>
 	</ul>
 </c:if>

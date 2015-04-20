@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.eclipse.jdt.internal.compiler.parser.Parser;
+
 import model.FlashMessage;
 import model.Pizza;
 import model.Statements;
@@ -44,10 +49,31 @@ public class BrowseController extends HttpServlet {
 			
 			Statements stmts = new Statements();
 			
-			List<Pizza> pizzas = stmts.getPizzas(offset, pizzasPerPage, sortOrder);		
-			int totalPizzas = stmts.getNumPizzas();
-			int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
+			String minPrice = request.getParameter("minPrice");
+			String maxPrice = request.getParameter("maxPrice");
+			List<Pizza> pizzas;
 			
+			int totalPizzas = stmts.getNumPizzas();
+			
+			if(minPrice != null && !minPrice.isEmpty() && maxPrice != null && !maxPrice.isEmpty()) {
+				Pattern p = Pattern.compile("\\d+");
+				Matcher m = p.matcher(minPrice);
+				Matcher m1 = p.matcher(maxPrice);
+				if (!m.matches() || !m1.matches()) {
+					RequestDispatcher view = request.getRequestDispatcher("views/pizza/browse.jsp");
+					request.setAttribute("error", "Minimum price or max price ERROR...<br>");
+					view.forward(request, response);
+					return;
+				}
+				pizzas = stmts.getPizzas(offset, pizzasPerPage, sortOrder, Integer.parseInt(minPrice), Integer.parseInt(maxPrice));
+				totalPizzas = stmts.getNumPizzas(Integer.parseInt(minPrice), Integer.parseInt(maxPrice));
+			}
+			else {
+				pizzas = stmts.getPizzas(offset, pizzasPerPage, sortOrder);	
+				totalPizzas = stmts.getNumPizzas();
+			}
+			
+			int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
 			request.setAttribute("pizzas", pizzas);
 			request.setAttribute("totalPages", totalPages);
 			request.setAttribute("page", page);
