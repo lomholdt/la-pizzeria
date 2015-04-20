@@ -17,7 +17,6 @@ public class DBConnect {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String connectionUrl = "jdbc:mysql://mysql.itu.dk:3306/la_pizzeria";
-//			String connectionUrl = "jdbc:mysql://localhost:3306/la_pizzeria";
 			String connectionUser = "la_pizzeria";
 			String connectionPassword = "pizzatime";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
