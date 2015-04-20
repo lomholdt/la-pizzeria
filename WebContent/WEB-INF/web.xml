@@ -28,7 +28,7 @@
     <servlet-name>CreateUserController</servlet-name>
     <url-pattern>/createuser</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>CreateCustomPizza</servlet-name>
     <servlet-class>controller.CreateCustomPizza</servlet-class>
   </servlet>
@@ -107,6 +107,14 @@
   <servlet-mapping>
     <servlet-name>CheckoutController</servlet-name>
     <url-pattern>/checkout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+     <servlet-name>ApiController</servlet-name>
+    <servlet-class>controller.ApiController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApiController</servlet-name>
+    <url-pattern>/api</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>default</servlet-name>

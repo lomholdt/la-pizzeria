@@ -182,6 +182,46 @@ public class Statements {
 		}	
 	}
 	
+	public List<Pizza> getPizzas(int minPrice, int maxPrice) throws Exception{
+		try {
+			List<Pizza> pizzas = new ArrayList<Pizza>();
+			rs = c.getData("SELECT id, name, price, description FROM pizza WHERE price >= " + minPrice + " AND " + "price <=" + maxPrice);
+			
+			while(rs.next()){
+				Pizza p = new Pizza();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getInt("price"));
+				p.setDescription(rs.getString("description"));
+				pizzas.add(p);
+			}
+			
+			return pizzas;
+		} catch (Exception e) {
+			throw e;
+		}	
+	}
+	
+	public List<Pizza> getPizzas() throws Exception{
+		try {
+			List<Pizza> pizzas = new ArrayList<Pizza>();
+			rs = c.getData("SELECT id, name, price, description FROM pizza");
+			
+			while(rs.next()){
+				Pizza p = new Pizza();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getInt("price"));
+				p.setDescription(rs.getString("description"));
+				pizzas.add(p);
+			}
+			
+			return pizzas;
+		} catch (Exception e) {
+			throw e;
+		}	
+	}
+	
 	public int getNumPizzas(){
 		try {
 			PreparedStatement pinstmt = c.preparedStatement("SELECT COUNT(*) AS numpizz FROM pizza");
