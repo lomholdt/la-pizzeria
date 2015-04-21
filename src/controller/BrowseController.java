@@ -91,7 +91,6 @@ public class BrowseController extends HttpServlet {
 				totalPizzas = pizzas.size();
 				int toPizza = pizzasPerPage+offset > pizzas.size() ? pizzas.size() : pizzasPerPage+offset;
 				pizzas = pizzas.subList(offset, toPizza);
-//				totalPizzas = stmts.getNumPizzas(Integer.parseInt(minPrice), Integer.parseInt(maxPrice));
 			}
 			else {
 				pizzas = stmts.getPizzas();
@@ -106,13 +105,7 @@ public class BrowseController extends HttpServlet {
 				totalPizzas = pizzas.size();
 				int toPizza = pizzasPerPage+offset > pizzas.size() ? pizzas.size() : pizzasPerPage+offset;
 				pizzas = pizzas.subList(offset, toPizza);
-//				totalPizzas = stmts.getNumPizzas();
-				
 			}
-//			System.out.println("=================================");
-//			for (Pizza pizza : pizzas) {
-//				System.out.println(pizza.getName() + " " + pizza.getPrice());
-//			}
 			
 			int totalPages = (int)Math.ceil(totalPizzas * 1.0 / pizzasPerPage);
 			request.setAttribute("pizzas", pizzas);
@@ -169,7 +162,6 @@ public class BrowseController extends HttpServlet {
 				Pizza p = new Pizza();
 				Node pizza = listOfPizzas.item(i);
 				
-//				System.out.println("\nCurrent Element :" + pizza.getNodeName());
 				if (pizza.getNodeType() == Node.ELEMENT_NODE){
 					Element element = (Element) pizza;
 					
