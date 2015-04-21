@@ -78,8 +78,7 @@ public class BrowseController extends HttpServlet {
 					view.forward(request, response);
 					return;
 				}
-
-				System.out.println("Getting pizzas by price range");
+				
 				pizzas = stmts.getPizzas(Integer.parseInt(minPrice), Integer.parseInt(maxPrice));
 				pizzas.addAll(getXMLPizzas(Integer.parseInt(minPrice), Integer.parseInt(maxPrice)));
 				if (sortOrder.equals("price")){
@@ -95,7 +94,7 @@ public class BrowseController extends HttpServlet {
 			else {
 				pizzas = stmts.getPizzas();
 				pizzas.addAll(getXMLPizzas(0, 0));
-				System.out.println(sortOrder);
+
 				if (sortOrder.equals("price")){
 					Collections.sort(pizzas, new PriceComparator());
 				}
