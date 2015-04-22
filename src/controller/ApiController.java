@@ -42,19 +42,26 @@ public class ApiController extends HttpServlet {
 			String maxPrice = request.getParameter("maxPrice");
 			List<Pizza> pizzas;
 			
+			int min = 0;
+			int max = Integer.MAX_VALUE;
+			Pattern p = Pattern.compile("\\d+");
 			
-			if(minPrice != null && !minPrice.isEmpty() && maxPrice != null && !maxPrice.isEmpty()) {
-				Pattern p = Pattern.compile("\\d+");
+			if(minPrice != null && !minPrice.isEmpty()) {
 				Matcher m = p.matcher(minPrice);
-				Matcher m1 = p.matcher(maxPrice);
-				if (!m.matches() || !m1.matches()) {
-					return;
+				if (m.matches()) {
+					min = Integer.parseInt(minPrice);
 				}
-				pizzas = stmts.getPizzas(Integer.parseInt(minPrice), Integer.parseInt(maxPrice));
 			}
-			else {
-				pizzas = stmts.getPizzas();	
+			
+			if(maxPrice != null && !maxPrice.isEmpty()) {
+				Matcher m = p.matcher(maxPrice);
+				if (m.matches()) {
+					max = Integer.parseInt(maxPrice);
+				}
 			}
+			
+			pizzas = stmts.getPizzas(min, max);
+			
 			String xml = "<?xml version='1.0' encoding='UTF-8'?>";
 			xml += "<collection>";
 			for (Pizza pizza : pizzas) {
