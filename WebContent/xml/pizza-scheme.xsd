@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	xmlns:p="http://pizza.dev" 
+	targetNamespace="http://pizza.dev">
+	<element name="collection">
+		<complexType>
+			<sequence>
+				<element ref="p:pizza" minOccurs="0" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
+	<element name="pizza">
+		<complexType>
+			<sequence>
+				<element name="name" type="string" />
+				<element name="price" type="nonNegativeInteger" />
+				<element name="description" type="string" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

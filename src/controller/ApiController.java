@@ -63,15 +63,17 @@ public class ApiController extends HttpServlet {
 			pizzas = stmts.getPizzas(min, max);
 			
 			String xml = "<?xml version='1.0' encoding='UTF-8'?>";
-			xml += "<collection>";
+			xml += "<p:collection xmlns:p='http://pizza.dev' "
+					+ "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' "
+					+ "xsi:schemaLocation='http://46.101.8.79/xml pizza-scheme.xsd'>";
 			for (Pizza pizza : pizzas) {
-				xml += "<pizza>";
+				xml += "<p:pizza>";
 				xml += "<name>" + pizza.getName() + "</name>";
 				xml += "<price>" + pizza.getPrice() + "</price>";
 				xml += "<description>" + pizza.getDescription() + "</description>";
-				xml += "</pizza>";
+				xml += "</p:pizza>";
 			}
-			xml += "</collection>";
+			xml += "</p:collection>";
 			
 			PrintWriter pw = response.getWriter();
 			pw.print(xml);

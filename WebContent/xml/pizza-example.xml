@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<p:collection xmlns:p="http://pizza.dev" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/la-pizzeria/xml pizza-scheme.xsd">
+<p:pizza>
+<name>Marianara</name>
+<price>75</price>
+<description>
+tomato, anchovies, grated parmesan, black olives, oregano and olive oil
+</description>
+</p:pizza>
+<p:pizza>
+<name>Margherita</name>
+<price>85</price>
+<description>Margherita - tomato, mozzarella, basil</description>
+</p:pizza>
+<p:pizza>
+<name>Salamina</name>
+<price>115</price>
+<description>tomato, mozzarella, salame, mascarpone</description>
+</p:pizza>
+<p:pizza>
+<name>Burrata</name>
+<price>130</price>
+<description>vine tomatoes, rucola and burrata</description>
+</p:pizza>
+<p:pizza>
+<name>'Burning Love'</name>
+<price>135</price>
+<description>mozzarella, potatoes, fried onions, røget spæk</description>
+</p:pizza>
+<p:pizza>
+<name>Prosciulto</name>
+<price>130</price>
+<description>
+tomato, mozzarella, prosciulto di Norcia, rucola, pesto
+</description>
+</p:pizza>
+<p:pizza>
+<name>Gorgonzola e'Nduja</name>
+<price>140</price>
+<description>
+tomato, mozzarella, gorgonzola and spicy soft salame
+</description>
+</p:pizza>
+<p:pizza>
+<name>Capricciosa</name>
+<price>140</price>
+<description>
+tomato, mozzarella, ham, mushrooms, artichokes, olive, egg
+</description>
+</p:pizza>
+<p:pizza>
+<name>Bufala</name>
+<price>140</price>
+<description>tomato, vine tomatoes, buffalo mozzarella, basil</description>
+</p:pizza>
+<p:pizza>
+<name>Zuccone</name>
+<price>140</price>
+<description>mozzarella, courgette, smoked salmon, olives</description>
+</p:pizza>
+<p:pizza>
+<name>Vegetariana</name>
+<price>140</price>
+<description>
+tomato, mozzarella, seasonal vegetables, fresh basil, balsamico
+</description>
+</p:pizza>
+<p:pizza>
+<name>'Nick says it's good'</name>
+<price>140</price>
+<description>
+mozzarella, cauliflower, green olives, anchovies, capers, chili, pecorino cheese
+</description>
+</p:pizza>
+<p:pizza>
+<name>Porcella</name>
+<price>155</price>
+<description>organic sausage, porcini, tomato, mozzarella</description>
+</p:pizza>
+<p:pizza>
+<name>Muuu!</name>
+<price>155</price>
+<description>
+dry cured beef, vine tomatoes, rucola, shaved parmesan
+</description>
+</p:pizza>
+<p:pizza>
+<name>Pepperoni and peperoni</name>
+<price>155</price>
+<description>
+tomato, mozzarella, marinaded peppers, spicy salame, smoked cheese, parsley
+</description>
+</p:pizza>
+<p:pizza>
+<name>Bieta e Ciauscolo</name>
+<price>155</price>
+<description>
+tomato, mozzarella, spicy chards (sølvbede) and freshly cured soft salame
+</description>
+</p:pizza>
+</p:collection>
